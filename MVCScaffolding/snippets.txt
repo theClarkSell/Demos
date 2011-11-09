@@ -1,0 +1,45 @@
+///////////////////////////////
+// Model - Podcast
+
+	public class Podcast
+    {
+        public int PodcastId { get; set; }
+        public string Name { get; set; }
+        public string Artist { get; set; }
+ 
+        public virtual ICollection<Show> Shows { get; set; }
+    }
+
+///////////////////////////////
+// Model - Show
+
+	public class Show
+	{
+		public int ShowId { get; set; }
+		public int PodcastId { get; set; }
+
+		public string Title { get; set; }
+		public string Description { get; set; }
+		public string ShowNotes { get; set; }
+		
+		public virtual Podcast Podcast { get; set; }
+	}
+
+///////////////////////////////
+// Clear View Engines	
+
+	ViewEngines.Engines.Clear();
+	ViewEngines.Engines.Add( new RazorViewEngine());
+
+///////////////////////////////
+// WebActivator - Assembly Attribute
+
+	[assembly: WebActivator.PreApplicationStartMethod(typeof(DeveloperSmackdown.App_Start.WHOA), "Start")]
+	
+///////////////////////////////
+// WebActivator - Start Method
+	
+	public static void Start()
+	{
+		Trace.TraceInformation("Did that just happen");
+	}
