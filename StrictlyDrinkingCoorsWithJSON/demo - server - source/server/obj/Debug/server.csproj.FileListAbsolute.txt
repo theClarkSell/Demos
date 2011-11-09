@@ -1,0 +1,10 @@
+C:\source\git\Demos\StrictlyDrinkingCoorsWithJSON\demo - server - source\server\bin\NotDelicious.dll
+C:\source\git\Demos\StrictlyDrinkingCoorsWithJSON\demo - server - source\server\bin\NotDelicious.pdb
+C:\source\git\Demos\StrictlyDrinkingCoorsWithJSON\demo - server - source\server\bin\EntityFramework.dll
+C:\source\git\Demos\StrictlyDrinkingCoorsWithJSON\demo - server - source\server\bin\System.Data.SqlServerCe.dll
+C:\source\git\Demos\StrictlyDrinkingCoorsWithJSON\demo - server - source\server\bin\System.Data.SqlServerCe.Entity.dll
+C:\source\git\Demos\StrictlyDrinkingCoorsWithJSON\demo - server - source\server\bin\WebActivator.dll
+C:\source\git\Demos\StrictlyDrinkingCoorsWithJSON\demo - server - source\server\bin\WebActivator.pdb
+C:\source\git\Demos\StrictlyDrinkingCoorsWithJSON\demo - server - source\server\obj\Debug\ResolveAssemblyReference.cache
+C:\source\git\Demos\StrictlyDrinkingCoorsWithJSON\demo - server - source\server\obj\Debug\NotDelicious.dll
+C:\source\git\Demos\StrictlyDrinkingCoorsWithJSON\demo - server - source\server\obj\Debug\NotDelicious.pdb
