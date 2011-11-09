@@ -1,0 +1,73 @@
+﻿
+@section scripts {
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+            
+            var arrayOfStuff = {
+                items: [{
+                    id: '#getData',
+                    click: function () {
+                        alert('the GetData button');
+                    }
+                },
+                {
+                    id: '#doSomething',
+                    click: function () {
+                        alert('the doSomething button');
+                    }
+                }]
+            };
+            
+            (function (stuff) { 
+                
+                $.each(stuff.items, function ( key, value ) {
+                    $(value.id).bind('click', value.click);
+                    //$(value.id)[0].attachEvent('onclick', value.click);
+                });
+                
+            })(arrayOfStuff);
+            
+        });
+        
+    </script>
+}
+
+<button id="getData">get me some data</button><br/>
+<button id="doSomething">ok, now do something</button>
+
+@{
+    /*
+        DEMO SCRIPT
+            Purpose is to create an array of items of which one of the objects in the array is a function.
+            Loop through the array and use jQuery to bind the items in the array to the buttons on the page
+            Use the button, therefor executing the function that was originally in the array.
+    
+        Finished Code:
+        
+            var arrayOfStuff = {
+                items: [{
+                    id: '#getData',
+                    click: function () {
+                        alert('the GetData button');
+                    }
+                },
+                {
+                    id: '#doSomething',
+                    click: function () {
+                        alert('the doSomething button');
+                    }
+                }]
+            };
+            
+            (function (stuff) { 
+                
+                $.each(stuff.items, function ( key, value ) {
+                    $(value.id).bind('click', value.click);
+                    //$(value.id)[0].attachEvent('onclick', value.click);
+                });
+                
+            })(arrayOfStuff);
+    */
+}
+

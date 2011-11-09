@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Geolocation</title>
+    <script src="../js/modernizr-2.0.6.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js" type="text/javascript"></script>
+    <script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0" type="text/javascript"></script>
+    <style>
+        #map {
+           position: absolute;
+           top: 10px;
+           left: 10px;
+           width: 300px;
+           height: 300px;
+           border:#555555 2px solid;
+        }
+        
+        #details {
+            display: none;
+            position: relative;
+            top: 310px;
+            left: 10px;
+        }
+        
+        #geoDetails {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 325px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+            background-color: Silver;
+        }
+        
+        #geoDetails header>h1 {
+            font-size: 1.45em;          
+        }        
+    </style>
+</head>
+<body>
+    
+    <section id="details">
+        <h1>Geolocation Fallback Form</h1>
+        <fieldset>
+            <legend>Please Enter your Address:</legend>
+            Address: <input type="text" id="address" /> <br />
+            <input type="button" id="findMe" value="Find Me" />
+        </fieldset>        
+    </section>
+    
+    <div id="map"></div>
+    
+    <article id="geoDetails">
+        <header><h1>Location Details</h1></header>
+        <div id="lat"></div>
+        <div id="long"></div>
+        <div id="accuracy"></div>
+    </article>
+        
+    <script type="text/javascript">
+
+        var _creds = "Aobl4homd3pxwBrWnQNuX25Vna6u25EHc-LJcvzIGPldJLQZdsGq6mk57Aq0ft80";
+        var _map = new Microsoft.Maps.Map(document.getElementById("map"), { credentials: _creds });
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+            placeLocationOnMap(position.coords.latitude, position.coords.longitude);
+            setDetails(position);
+        }, errorHandler);
+        
+        /*
+        try {
+            var _creds = "Aobl4homd3pxwBrWnQNuX25Vna6u25EHc-LJcvzIGPldJLQZdsGq6mk57Aq0ft80";
+            var _map = new Microsoft.Maps.Map(document.getElementById("map"), { credentials: _creds });
+
+            if (Modernizr.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    placeLocationOnMap(position.coords.latitude, position.coords.longitude);
+                    setDetails(position);
+                }, errorHandler);
+            } else {
+                showFallback();
+            }
+        } catch (e) {
+            swapImage();
+        }
+        */
+
+        function errorHandler(e) {
+            if (e === 1) { // PERMISSION_DENIED
+                showFallback();
+            } else { // POSITION_UNAVAILABLE or TIMEOUT
+                swapImage();
+            }
+        }
+
+        function showFallback() {
+            $('#details').show();
+            $('#geoDetails').hide();
+
+            $('#findMe').click(function () {
+                var address = $('#address').val();
+
+                $.getJSON('http://dev.virtualearth.net/REST/v1/Locations?query=' + address + '&key=' + _creds + '&jsonp=?', function (result) {
+                    if (result.resourceSets[0].estimatedTotal > 0) {
+                        var loc = result.resourceSets[0].resources[0].point.coordinates;
+                        placeLocationOnMap(loc[0], loc[1]);
+                    }
+                    else {
+                        alert("sorry that address cannot be found");
+                    }
+                });
+            });
+        }
+
+        function placeLocationOnMap(lat, long) {
+            var location = new Microsoft.Maps.Location(lat, long);
+            _map.setView({ zoom: 18, center: location });
+
+            // Add a pushpin to the map representing the current location
+            var pin = new Microsoft.Maps.Pushpin(location);
+            _map.entities.push(pin);
+        }
+
+        function setDetails(position) {
+            $('#lat').text('Latitude: ' + position.coords.latitude);
+            $('#long').text('Longitude: ' + position.coords.longitude);
+            $('#accuracy').text('Accuracy: ' + position.coords.accuracy + ' Meters');
+            $('#geoDetails').fadeIn('slow');
+        }
+
+        function swapImage() {
+            $('#map').hide();
+            $('<img>', {
+                src: 'images/fallbackMap.png'
+            }).appendTo('body');
+        }
+    </script>
+
+</body>
+</html>

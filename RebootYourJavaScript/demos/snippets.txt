@@ -1,0 +1,103 @@
+///////////////////////////////
+--------------------------
+///////////////////////////////
+// jsbin - write method
+
+function write(message) {
+ document.getElementById('message').innerHTML += message + ' <br/>';
+};
+
+///////////////////////////////
+// jsbin - html template
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>Reboot Your JavaScript</title>
+</head>
+<body>
+  <p id="message"></p>
+</body>
+</html>
+
+///////////////////////////////
+// jsbin - hello add
+
+write("start");
+
+var num1 = 1;
+var num2 = 2;
+
+write("start: " + num1);
+write("start: " + num2);
+
+var addNumber = function( num1, num2 ) {
+  return num1 + num2;
+};
+
+write( "result: " + addNumber ( num1, num2 ) );
+
+///////////////////////////////
+// jsbin - global var
+
+a = 1;
+var b = 2;
+
+var add = function (num1, num2) {
+  a = num1;
+  return num1 + num2;
+}
+    
+write(a);
+write(b);
+
+write( add(3, 4) );
+
+write(a);
+write(b);
+
+///////////////////////////////
+// jsbin - window.alert override
+
+window.alert = function () {
+  console.log(arguments[0]);
+}
+
+window.alert("something");
+
+///////////////////////////////
+//Script Section
+
+@section tests {
+    <script type="text/javascript">
+       
+        test('testName', function() {
+            ok(true);
+        });
+        
+    </script>
+}
+
+///////////////////////////////
+//Script Block
+    
+	<script type="text/javascript">
+       
+	</script>
+	
+///////////////////////////////
+//Equals Test
+		
+		test('testName', function() {
+			equals(a, b, "message");
+		});
+		
+///////////////////////////////
+--------------------------
+///////////////////////////////
+// jQuery CDN
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2.min.js"></script>
+
+

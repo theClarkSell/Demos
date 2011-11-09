@@ -1,0 +1,32 @@
+﻿<h1>Account Creation</h1>
+<p>
+    Use the form below to create a new account. 
+</p>
+
+@Html.ValidationSummary(false, "Registration failed. Please correct the errors and try again")
+
+<form method="post" action="">
+    <fieldset class="no-legend">
+        <legend>Account Creation</legend>
+                <ol>
+            <li class="email">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" title="Email address" placeholder="Email address" />
+                @Html.ValidationMessage("email")
+            </li>
+            <li class="password">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" title="Password" />
+                @Html.ValidationMessage("password")
+            </li>
+            <li class="confirm-password">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" title="Confirm password" />
+                @Html.ValidationMessage("confirmPassword")
+            </li>            
+        </ol>
+        <p class="form-actions">
+            <input type="submit" value="Register" title="Register" />
+        </p>
+    </fieldset>
+</form>

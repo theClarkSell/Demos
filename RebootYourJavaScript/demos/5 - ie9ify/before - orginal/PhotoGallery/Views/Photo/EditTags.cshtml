@@ -1,0 +1,22 @@
+﻿<div class="sidebar">
+    <h1>Edit Photo's Tags</h1>
+    <h2>@ViewBag.FileTitle</h2>
+    <form method="post" action="">
+        <fieldset class="no-legend">
+            <legend>Edit Tags</legend>
+            <ol>
+                <li>
+                    <label for="newTags">Enter tags, semicolon-delimited:</label>
+                    <textarea id="newTags" name="newTags" title="Enter tags seperated by a semicolon" rows="4" cols="50" placeholder="Enter tags seperated by a semicolon">@Model.TagStringToDisplay</textarea>
+                </li>
+            </ol>
+            <p class="form-actions">
+                <input type="submit" value="Save Changes" title="Save changes" />
+                <a href="@Url.Action("View", new { id = Model.Photo.Id })" title="Do not save changes">Cancel</a>
+            </p>
+        </fieldset>
+    </form>
+</div>
+<div class="main">
+    <img alt="@Html.AttributeEncode(Model.Photo.FileTitle)" src="@Url.Action("Thumbnail", new { id = Model.Photo.Id, size="large" })" />
+</div>

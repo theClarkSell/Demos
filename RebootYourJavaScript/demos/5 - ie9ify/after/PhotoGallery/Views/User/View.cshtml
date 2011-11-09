@@ -1,0 +1,38 @@
+﻿<div class="sidebar">
+    <dl>
+        <dt>Display name</dt>
+        <dd>@Model.User.DisplayName</dd>
+        <dt>Bio</dt>
+        <dd>
+            @if (Model.User.Bio != "") {
+                <text>@Model.User.Bio</text>
+            } else {
+                <text>This user has not created a biography.</text>
+            } 
+        </dd>
+    </dl>
+    @if (WebSecurity.CurrentUserId == Model.User.UserId) {
+        <p>
+            You can <a href="@Url.Action("Default", "User")">edit your profile</a> if you desire.
+        </p>
+    }
+</div>
+<div class="main">
+<h1>@(Model.User.DisplayName)'s Photos</h1>
+    @if (@Model.Photos.Count == 1) {
+        <h2>This user has uploaded one photo.</h2>
+    } else {
+        <h2>This user has uploaded @Model.Photos.Count photos.</h2>
+    }
+
+    <ul class="thumbnails user-photos">
+        @foreach (var photo in Model.Photos) {
+            <li>
+                <a href="@Url.Action("View", "Photo", new { id = photo.Id })">
+                    <img alt="thumbnail of @Path.GetFileNameWithoutExtension(photo.FileTitle)" src="@Url.Action("Thumbnail", "Photo", new { id = photo.Id })" class="thumbnail-border" />
+                    <span class="image-overlay">@Path.GetFileNameWithoutExtension(photo.FileTitle)</span>
+                </a>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,62 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Scripts/f:jquery.validate.js" caret="655" fromTop="15" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Scripts/f:jquery.ie9ify.wrapper.js" caret="0" fromTop="0" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/f:Global.asax.cs" caret="1128" fromTop="32" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/f:Web.config" caret="1163" fromTop="25" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="0" fromTop="0" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Gallery/f:Default.cshtml" caret="405" fromTop="12" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Controllers/f:GalleryController.cs" caret="2202" fromTop="30" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Repositories/f:PhotoGalleryRepository.cs" caret="1127" fromTop="23" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Gallery/f:New.cshtml" caret="363" fromTop="9" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="4154" fromTop="15" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="30" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="6" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="26" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="51" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="4154" fromTop="30" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="43" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="28" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="16" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Scripts/f:jquery.ie9ify.wrapper.js" caret="125" fromTop="5" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Scripts/f:jquery.ie9ify.wrapper.js" caret="52" fromTop="2" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Scripts/f:jquery.ie9ify.wrapper.js" caret="642" fromTop="24" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Scripts/f:jquery.ie9ify.wrapper.js" caret="967" fromTop="33" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Scripts/f:jquery.ie9ify.wrapper.js" caret="1426" fromTop="40" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Scripts/f:jquery.ie9ify.wrapper.js" caret="1619" fromTop="35" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Scripts/f:jquery.ie9ify.wrapper.js" caret="2323" fromTop="29" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Scripts/f:jquery.ie9ify.wrapper.js" caret="3035" fromTop="40" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="22" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="32" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="27" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="11" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="395" fromTop="24" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="4148" fromTop="18" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="4148" fromTop="28" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="4246" fromTop="28" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="4821" fromTop="24" />
+      <File id="AA657C36-C388-4DB1-8685-7CD008CE2391/d:Views/d:Shared/f:_Layout.cshtml" caret="4148" fromTop="13" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

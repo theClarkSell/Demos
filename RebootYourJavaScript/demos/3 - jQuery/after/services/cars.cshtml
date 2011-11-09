@@ -1,0 +1,13 @@
+﻿@using System.Dynamic;
+
+@{
+    List<string> cars = new List<string>();
+    cars.Add("Pontiac");
+    cars.Add("Ford");
+    cars.Add("Chevy");
+    cars.Add("Honda");
+    
+    Response.ContentType = "application/json";
+    Response.Write(Json.Encode(cars));
+    
+}

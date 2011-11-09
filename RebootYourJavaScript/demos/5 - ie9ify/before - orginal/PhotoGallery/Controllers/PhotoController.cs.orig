@@ -1,0 +1,112 @@
+﻿using System;
+using System.Dynamic;
+using System.Net;
+using System.Web;
+using System.Web.Helpers;
+using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.WebPages;
+using PhotoGallery.Repositories;
+using WebMatrix.Data;
+using WebMatrix.WebData;
+
+namespace after.Controllers
+{
+    public class PhotoController : Controller
+    {
+        public ActionResult View(int? id)
+        {
+            if (!id.HasValue)
+                return RedirectToRoute("Default");
+
+            var photoDB = new PhotoGalleryRepository();
+            var tagDB = new TagRepository();
+            var userDB = new UserRepository();
+
+            var photo = photoDB.GetPhoto(id.Value);
+            if (photo == null)
+                return HttpNotFound();
+
+            ViewBag.Title = "Photo - " + photo.FileTitle;
+
+            dynamic model = new ExpandoObject();
+            model.Photo = photo;
+            model.User = userDB.GetUserById(photo.UserId);
+            model.Gallery = photoDB.GetGallery(photo.GalleryId);
+            model.Comments = photoDB.GetCommentsByPhoto(photo.Id);
+            model.TagList = tagDB.GetTagListByPhoto(photo.Id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult View(int? id, string newComment)
+        {
+            if (!id.HasValue)
+                return RedirectToRoute("Default");
+
+            if (newComment.IsEmpty())
+                return RedirectToAction("View", new { id = id.Value});
+
+            var db = new PhotoGalleryRepository();
+            db.InsertComment(id.Value, newComment, WebSecurity.CurrentUserId);
+
+            return RedirectToAction("View", new { id = id.Value });
+        }
+
+        [OutputCache(Duration = 60)]
+        public ActionResult Thumbnail(int id)
+        {
+            var db = new PhotoGalleryRepository();
+            var photo = db.GetPhoto(id);
+
+            if (photo == null)
+                return HttpNotFound();
+
+            var size = Request["size"] ?? "";
+
+            int width;
+            int height;
+            switch (size.ToUpperInvariant())
+            {
+                case "":
+                case "SMALL":
+                    width = 200;
+                    height = 200;
+                    break;
+                case "MEDIUM":
+                    width = 400;
+                    height = 300;
+                    break;
+                case "LARGE":
+                    width = 625;
+                    height = 625;
+                    break;
+                default:
+                    return new HttpStatusCodeResult(400);
+            }
+
+            var image = new WebImage(photo.FileContents);
+            image.Resize(width, height).Write();
+
+            return null;
+        }
+
+        [OutputCache(Duration = 60)]
+        public ActionResult Full(int? id)
+        {
+            if (!id.HasValue)
+                return RedirectToAction("View", new { id = id.Value });
+
+            var db = new PhotoGalleryRepository();
+            var photo = db.GetPhoto(id.Value);
+            if (photo == null)
+                return HttpNotFound();
+
+            Response.AppendHeader("Content-Disposition", String.Format("attachment; filename={0}", HttpUtility.UrlPathEncode(photo.FileTitle + photo.FileExtension)));
+            new WebImage(photo.FileContents).Write();
+
+            return null;
+        }
+    }
+}

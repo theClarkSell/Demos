@@ -1,0 +1,25 @@
+﻿<h1>@ViewBag.Name</h1>
+
+@if (Model.Count == 1) {
+    <p>This gallery contains one photo.</p>
+} else {
+    <p>This gallery contains @Model.Count photos.</p>
+}
+
+<ul class="thumbnails">
+    @foreach (var photo in Model)
+    {
+        <li>
+            <a href="@Url.Action("View", "Photo", new { id = photo.Id })">
+                <img alt="thumbnail of @Path.GetFileNameWithoutExtension(photo.FileTitle)" src="@Url.Action("Thumbnail", "Photo", new { id = photo.Id })" class="thumbnail-border" />
+                <span class="image-overlay">@Path.GetFileNameWithoutExtension(photo.FileTitle)</span>
+            </a>
+        </li>
+    }
+</ul>
+
+@if (WebSecurity.IsAuthenticated) {
+    <p class="actions">
+        <a href="@Url.Action("Upload", new { id = ViewBag.GalleryId })">Upload a Photo</a>
+    </p>
+}

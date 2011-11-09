@@ -1,0 +1,20 @@
+﻿@{
+    Page.Title = "digging into strict";
+}
+
+@section scripts {
+    <script>
+        
+        var something = "something else";
+        
+        "use strict";       // wasn't first statement
+        foo = "foo";        // will not fail
+        
+        (function() {
+            "use strict";
+            bar = "bar";    // will fail
+        })();
+        
+    </script>
+}
+

@@ -1,0 +1,17 @@
+-- LightsOut.co
+
+http://lightsout.co
+http://lightsout.co/services/getlinks
+
+
+-- DeveloperSmackdown.com
+
+http://developersmackdown.com
+http://developersmackdown.com/services/odata
+
+http://developersmackdown.com/services/odata/
+http://developersmackdown.com/services/odata/Shows(PodcastId=1,ShowId=54)
+
+-- Gravatar
+http://gravatar.com/clarksell
+http://0.gravatar.com/avatar/592fd4bb2692c7d9fbe8f5ef3af52309?size=420

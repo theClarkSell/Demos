@@ -1,0 +1,29 @@
+﻿@{
+    Page.Title = "simple xhr with html";
+}
+
+@section scripts {
+    <script>
+
+/*
+    function to handle the callback. 
+    We're just going to take the results and append them to the body.
+*/
+        var callback = function(e) {
+            $('#results').append(this.responseText);
+        }
+        
+/*
+    The following is the actual xhr setup and call. 
+    We're just calling a site and getting back the results. Nothing Special.
+*/
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://developersmackdown.com');
+        xhr.onload = callback;
+                
+        xhr.send();    
+    
+    </script>
+    
+}
+<div id=results></div>

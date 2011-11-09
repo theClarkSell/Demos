@@ -1,0 +1,73 @@
+﻿@section scripts {
+    <script type="text/javascript">
+        $(document).ready( function () {
+            
+            var a = 1;
+            b = 2;
+            
+         
+            var myfunc = function (in1, in2){
+                //alert(myfunc.toString());
+            };
+            
+            myfunc.toString = function () {
+              //alert("what are you doing");  
+            };
+            
+            myfunc(8, 9);
+            
+            (function (somethingNew){
+                alert(somethingNew);
+                alert(undefined);
+            })(a);
+            
+            
+            
+            
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@{
+    /*
+    
+    Demo Script...
+    
+    1. Create a variable foo as a global with some string.
+    2. Create a function that gets involved immediatly. this function should have the name foo.
+    3. Call Alert with the argument and with the var foo
+    4. Change the function name such that it doesn't collid
+    5. Take the function name out.
+    6. OverWrite Alert.
+    
+    ---- Running SOLUTION ----
+    
+
+            //Overwrite Alert
+            window.alert = function () {
+              console.log(arguments[0]);  
+            };
+            
+            var foo = "my message";
+            
+            (function foo (someMessage) {
+                alert("Function Argument: " + someMessage)
+                alert("In function: " + foo);
+            })(foo);
+            
+            alert("At End: " + foo);  
+    
+*/
+
+}

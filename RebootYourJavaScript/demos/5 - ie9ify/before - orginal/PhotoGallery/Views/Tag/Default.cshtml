@@ -1,0 +1,20 @@
+﻿<h1>Tags</h1>
+
+@if (Model.Count == 1) {
+    <p>There is one tag.</p>
+}  else {
+    <p>There are @Model.Count tags.</p>
+}
+
+<ul class="thumbnails gallery">
+    @foreach (var tag in Model)
+    {
+        <li class="tag">
+            <a href="@Url.Action("Get", new { id = tag.TagName })">
+                <img alt="Images from @tag.TagName" src="@Url.Action("Thumbnail", "Tag", new { id = tag.TagName })" class="thumbnail-no-border" />
+                <span class="below-image">@tag.TagName</span>
+                <span class="image-overlay">@tag.TagCount photo(s)</span>
+            </a>
+        </li>
+    } 
+</ul>

@@ -1,0 +1,92 @@
+﻿<div class="sidebar">
+    <h1>@Model.Photo.FileTitle</h1>
+    @if (Model.User.UserId == WebSecurity.CurrentUserId) {
+        <p>
+            As the author, you can <a href="@Url.Action("Edit", new { id = Model.Photo.Id })">edit</a>
+            or <a href="@Url.Action("Remove", new { id = Model.Photo.Id })">remove</a> this photo.
+        </p>
+    }
+    <dl>
+        <dt class="description">Description</dt>
+        <dd class="description">
+            @if (!string.IsNullOrEmpty(Model.Photo.Description)) {
+                <text>@Model.Photo.Description</text>
+            } else {
+                <text>The uploader did not provide a description for this photo.</text>
+            }
+        </dd>
+        <dt class="uploaded-by">Uploaded by</dt>
+        <dd class="uploaded-by"><a href="@Url.Action("View", new { id = Model.User.UserId })">@Model.User.DisplayName</a></dd>
+        <dt class="upload-date">Upload date</dt>
+        <dd class="upload-date">@Model.Photo.UploadDate</dd>
+        <dt class="part-of-gallery">Gallery</dt>
+        <dd><a href="@Url.Action("View", new { id = Model.Gallery.Id })" title="View @Model.Gallery.Name gallery">@Model.Gallery.Name</a></dd>
+        <dt class="tags">Tags</dt>
+        <dd class="tags">
+            <ul class="tags">
+            @if (Model.TagList.Count == 0) {
+                <li>This photo has no tags.</li>
+            } else {
+                 foreach (var t in Model.TagList) {
+                    <li class="tag"><a href="@Url.Action("Get", "Tag", new { tagName = t.Tags_TagName })">@t.Tags_TagName</a></li>
+                }
+            }
+            </ul>
+            @if (WebSecurity.IsAuthenticated) {
+                <a href="@Url.Action("EditTags", new { id = Model.Photo.Id })">edit tags</a>
+            }
+        </dd>
+    </dl>
+
+    <p>
+        <a class="download" href="@Url.Action("Full", new { id = Model.Photo.Id })" title="Download: @(Model.Photo.FileTitle + Model.Photo.FileExtension)">Download full photo</a> (@(Model.Photo.FileSize / 1024) KB)
+    </p>
+</div>
+<div class="main">
+    <img class="large-photo" alt="@Html.AttributeEncode(Model.Photo.FileTitle)" src="@Url.Action("Thumbnail", new { id = Model.Photo.Id, size="large" })" />
+
+    @switch ((int)Model.Comments.Count) {
+        case 0:
+            <h2>Nobody has commented on this photo</h2>
+            break;
+        case 1:
+            <h2>This photo has generated one comment.</h2>
+            break;
+        default:
+            <h2>This photo has generated @Model.Comments.Count comments.</h2>
+            break;
+    }
+
+    <ol class="comments">
+        @foreach (var comment in Model.Comments) {
+            <li>
+                <h3 class="comment-header">
+                    <a href="@Url.Action("View", "User", new { id = comment.UserId })" title="View @(comment.DisplayName)'s profile">@comment.DisplayName</a> commented at @comment.CommentDate:
+                </h3>
+                <p class="comment-body">@comment.CommentText</p>
+            </li>
+        }
+    </ol>
+
+    @if (WebSecurity.IsAuthenticated) {
+        <form method="post" action="">
+            <fieldset id="addComment">
+                <legend>Post new comment</legend>
+                <ol>
+                    <li>
+                        <label for="newComment">Comment</label>
+                        <textarea id="newComment" name="newComment" title="Your comment" rows="6" cols="70"></textarea>
+                    </li>
+                </ol>
+                <p class="form-actions">
+                    <input type="submit" title="Add comment" value="Add comment" />
+                </p>
+            </fieldset>
+        </form>
+    } else {
+        <p>
+            Only registered user may leave comments. Please <a href="@Url.Action("Login", "Account")">login</a> 
+            or <a href="@Url.Action("Register", "Account")">create an account</a> to leave a comment.
+        </p>
+    }
+</div>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <script src="scripts/jquery-1.5.2.min.js"></script>
+        
+        <script type="text/javascript">
+            
+            $(document).ready( function () {
+                
+                write = function (message) {
+                    document.getElementById('message').innerHTML += message + ' <br/>';
+                };    
+            });
+                
+        </script>
+        
+        @RenderSection("scripts", required: false)
+
+    </head>
+    <body>
+        <p id="message"></p>
+        
+        @RenderBody()
+    </body>
+</html>

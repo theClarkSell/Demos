@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = "/shared/_layout.cshtml";
+}
+
+@section scripts {
+    <script type="text/javascript">
+    
+        $(document).ready( function () { 
+        
+            $.getJSON('services/cars', function (result) {
+                for (var i = 0; i < result.length; i++) {
+                    var option = new Option(result[i], result[i]);
+                    $('#cars').append(option);
+                };
+            });
+        
+            $('#cars').change(function () {
+                var selectedCar = $('#cars').val();
+
+                $.getJSON('services/models', { Model: selectedCar }, function (modelsReturned) {
+                    $('#carListBody').empty();
+                    $('#carListTemplate').tmpl(modelsReturned).appendTo('#carListBody');
+                });
+            });
+        });
+        
+    </script>
+}
+
+<script id="carListTemplate" type="text/x-jquery-tmpl">
+    <tr>
+        <td>${Model}</td>
+        <td>${Year}</td>
+    </tr>
+</script>
+
+<select id="cars">
+    <option></option>
+</select>
+
+<table width="600">
+    <thead>
+        <tr>
+            <th>Model</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    
+    <tbody id="carListBody"></tbody>
+</table>
+

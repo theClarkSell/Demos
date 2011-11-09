@@ -1,0 +1,24 @@
+﻿@{
+    Page.Title = "JSON.stringify";
+}
+
+@section scripts{
+
+    <script src="/scripts/sampleJSON.js"></script>
+    <script>
+        
+        $(document).ready( function () {
+           
+            var whiteList = ['firstName'];
+            
+            var results = JSON.stringify(sampleJsonObj, whiteList);
+            
+            $('#results').text(results);
+            
+        });
+        
+    </script>
+
+}
+
+<div id=results></div>

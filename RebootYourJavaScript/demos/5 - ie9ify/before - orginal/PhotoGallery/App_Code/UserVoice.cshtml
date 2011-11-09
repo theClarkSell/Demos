@@ -1,0 +1,389 @@
+@using System.Web.WebPages.Scope;
+@using UserVoiceApi;
+
+@* FeedbackTab
+  Summary:
+    This method renders an UserVoice feedback tab widget in the current page
+    
+  Parameters in order of appearance:
+
+    showTab: boolean(true (default)/false)
+        Specifies if the tab has to be rendered in the current page or not
+    
+    alignment: string ("left" (Default), "right")
+        Specifies the alignment of the tab in the current page
+
+    backgroundcolor: RGB hex  (#f00 default value)
+        Specifies the background color of the widget
+
+    textColor: String ("white" (default),"blank")
+        Specifies the text color of the widget
+    
+    hoverColor: RGB hex  (#06C default value)
+        Specifies the background color of the widget
+
+    language: Locale ("en" default value)
+        Specifies the ISO code language of the widget within the given list of supported languages:
+        cn, da, de, en, es, fi, fr, he, it, ja, nl, no_NB, pl, pt, pt_BR, tr
+
+    ssoToken:
+        Specifies the token for the single sign on 
+
+    forum: String
+        Specifies a forum Id for the widget
+*@
+@helper FeedbackTab(
+        bool showTab = true, 
+        string alignment = "left", 
+        string backgroundColor = "#f00", 
+        string textColor = "white",
+        string hoverColor = "#06C",
+        string language = "en",
+        string ssoToken = null,
+        string forum = ""
+    ) {
+        
+    var forumId = forum.Equals(string.Empty)?Forum: forum;
+        
+    if (IsInitialized) {
+        <script type="text/javascript">
+            var uservoiceOptions = {
+                
+            /* required */
+            key: '@Key',
+            host: '@Host', 
+            forum: '@forumId',
+            showTab: @showTab.ToString().ToLower(),  
+                
+            /* optional */
+            alignment: '@alignment',
+            background_color:'@backgroundColor', 
+            text_color: '@textColor',
+            hover_color: '@hoverColor',
+            lang: '@language',
+            params: { sso: '@ssoToken' }
+            };
+                
+            function _loadUserVoice() {
+            var s = document.createElement('script');
+            s.setAttribute('type', 'text/javascript');
+            s.setAttribute('src', ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js");
+            document.getElementsByTagName('head')[0].appendChild(s);
+            }
+            _loadSuper = window.onload;
+            window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+        </script>
+    } else {
+        <div>
+            User Voice Helper is not initialized. Please call 
+            UserVoice.Initialize(credential params) in your _AppStart.cshtml
+            page passing in your website credentials for UserVoice
+	    </div>
+    }  
+}
+
+@* CustomTab
+  Summary:
+        This method renders an UserVoice custom tab widget
+
+  Parameters:
+  
+    alignment: string ("left" (Default), "right")
+        Specifies the alignment of the tab in the current page
+
+    backgroundcolor: RGB hex  (#f00 default value)
+        Specifies the background color of the widget
+
+    textColor: String ("white" (default),"blank")
+        Specifies the text color of the widget
+    
+    hoverColor: RGB hex  (#06C default value)
+        Specifies the background color of the widget
+
+    language: Locale ("en" default value)
+        Specifies the ISO code language of the widget within the given list of supported languages:
+        cn, da, de, en, es, fi, fr, he, it, ja, nl, no_NB, pl, pt, pt_BR, tr  
+          
+    forum: String
+        Specifies a forum Id for the widget
+*@    
+@helper CustomTab(
+            string alignment = "left", 
+            string backgroundColor = "#f00", 
+            string textColor = "white",
+            string hoverColor = "#06C",
+            string language = "en",
+            string forum = "") {
+    @FeedbackTab(false, alignment, backgroundColor, textColor, hoverColor, language,null,forum);        	    
+}
+     
+@*
+FeedbackTabWithSSO
+Summary:
+    This method renders an UserVoice FeedbackTab using Single Sign On
+
+Parameters (for the tab):
+    showTab: boolean(true (default)/false)
+        Specifies if the tab has to be rendered in the current page or not
+    
+    alignment: string ("left" (Default), "right")
+        Specifies the alignment of the tab in the current page
+
+    backgroundcolor: RGB hex  (#f00 default value)
+        Specifies the background color of the widget
+
+    textColor: String ("white" (default),"blank")
+        Specifies the text color of the widget
+    
+    hoverColor: RGB hex  (#06C default value)
+        Specifies the background color of the widget
+
+    language: Locale ("en" default value)
+        Specifies the ISO code language of the widget within the given list of supported languages:
+        cn, da, de, en, es, fi, fr, he, it, ja, nl, no_NB, pl, pt, pt_BR, tr   
+
+Parameters (for Single Sign On):
+    displayName: String ("anonymous" defautl value)
+        Specifies the user name to be displayed
+
+    admin: String ("deny" default value, "accept")
+        Grant the user account admin access. 
+
+    avatarUrl: String
+        Specifies the user avatar url, restricted to 50px by 50px size
+
+    email: String
+        Specifies user's email address
+
+    expires: Timestamp, GMT
+        Specifies the token expiration time
+
+    guid: String
+        Specifies user unique identifies
+
+    url: String
+        Sets all user profile links to this URL
+
+    allowForums: Array
+        Specifies the exclusive list of Forum ids user has access to (doesn't restrict admins)
+
+    denyForums: Array
+        Specifies the list of Forum ids user does not have access to (doesn't restrict admins)
+
+    updates: Boolean ("false" default, "true")
+     	Specifies whether the user will receive updates on suggestions (on create only) 
+    
+    commentUpdates: Boolean ("false" default, "true")
+        Specifies whether the user will receive updates on suggestion comments (on create only) 
+
+    owner: String ("accept")
+        Make this user the account owner
+
+    locale: String
+        Specifies the ISO code language of the current user within the given list of supported languages:
+        cn, da, de, en, es, fi, fr, he, it, ja, nl, no_NB, pl, pt, pt_BR, tr  
+
+    forum: String
+        Specifies a forum Id for the widget
+*@
+@helper FeedbackTabWithSSO(
+            /* tab parameters */
+            bool showTab = true,          
+            string alignment = "left", 
+            string backgroundColor = "#f00", 
+            string textColor = "white",
+            string hoverColor = "#06C",
+            string language = "en",
+            
+            /* SSO Parameters */
+            string displayName = "",
+            string admin = "deny",
+            string avatarUrl = "",
+            string email = "",
+            string expires = "",
+            string guid = "",
+            string url = "",
+            string allowForums = "",
+            string denyForums = "",
+            string updates = "false",
+            string commentUpdates = "false",
+            string owner = "",
+            string locale = "",        
+            string forum = "") {
+        
+        string forumId = Forum.Equals(string.Empty)?forum:Forum;
+
+        if (!SSOKey.IsEmpty() && !guid.IsEmpty() && !expires.IsEmpty() ) {
+            var userDetails = new UserDetails() {
+                DisplayName = displayName,
+                Admin = admin,
+                AvatarUrl = avatarUrl,
+                Email = email,
+                Expires = expires,
+                Guid = guid,
+                Url = url,
+                AllowForums = allowForums,
+                DenyForums = denyForums,
+                Updates = updates,
+                CommentUpdates = commentUpdates,
+                Owner = owner,
+                Locale = locale
+			};
+            
+            var userJson = SSO.CreateUserJson(userDetails);
+            var ssoToken = SSO.CreateToken(Key, ApiKey, userJson);            
+            
+            @FeedbackTab(showTab, alignment, backgroundColor, textColor, hoverColor, language, ssoToken,forumId);
+        } else {
+            <div>
+                User Voice Helper is not initialized, or some required SSO data is missing. 
+                Please call UserVoice.Initialize(credential params) in your _AppStart.cshtml
+                page passing in your website credentials for UserVoice, and provide the required
+                Guid and Expiration values for SSO functionality.
+            </div>
+        }        
+}
+           
+@functions {
+
+    private static readonly object _isInitializedKey = new object();
+    private static readonly object _userVoiceKey = new object();
+    private static readonly object _hostKey = new object();
+    private static readonly object _forumKey = new object();
+    private static readonly object _ssoKey = new object();
+    private static readonly object _apiKey = new object();
+
+    /// <summary>
+    /// GetForums method returns all the forums of the application
+    /// </summary>    
+    /// <returns>IList of dynamic</returns>    
+    public static IList<dynamic> GetForumList() {
+        var forums = Api.GetForumList(Key,ApiKey);
+
+        return forums;
+    }
+    
+    /// <summary>
+    /// GetForum retrieves the specified forum
+    /// </summary>    
+    /// <param name="forumId">Specifies the forum Id. By default, it uses the initialized value</param>
+    /// <returns>dynamic </returns> 
+    public static dynamic GetForum(string forumId = "") {        
+        var forum = Api.GetForum(forumId.IsEmpty() ? Forum : forumId , Key, ApiKey);
+
+        return forum;
+    }
+
+    /// <summary>
+    /// This method retrieves the list of suggestions from a forum using Json
+    /// </summary>    
+    /// <param name="forumId">Specifies the forum Id. By default, it uses the initialized value</param>
+    /// <returns>IList of dynamic</returns>    
+    public static IList<dynamic> GetSuggestions(string forumId = "") {        
+        var suggestions = Api.GetSuggestionsList(forumId.IsEmpty() ? Forum : forumId, Key, ApiKey);
+
+        return suggestions;
+    }
+    
+    /// <summary>
+    /// This method retrieves the list of suggestions from a forum filtered by a search query using Json
+    /// </summary>    
+    /// <param name="forumId">Specifies the forum Id. By default, it uses the initialized value</param>
+    /// <param name="query">Specifies the search criteria</param>
+    /// <returns>IList of dynamic</returns>    
+    public static IList<dynamic> SearchForSuggestions(string forumId = "", string query = "") {        
+        var suggestions = Api.GetSuggestionsSearch(forumId.IsEmpty() ? Forum : forumId, query, Key, ApiKey);
+
+        return suggestions;
+    }
+    
+    /// <summary>
+    /// This method retrieves the list of suggestions from a forum filtered by a search query using Json
+    /// </summary>    
+    /// <param name="forumId">Specifies the forum Id. By default, it uses the initialized value</param>
+    /// <param name="query">Specifies the search criteria</param>
+    /// <returns>IList of dynamic</returns>    
+    public static IList<dynamic> GetCommentsForSuggestion(string suggestionId = "", string forumId = "", string query = "") {
+        var comments = Api.GetCommentsForSuggestions(suggestionId, forumId.IsEmpty() ? Forum : forumId, Key, ApiKey);
+
+        return comments;
+    }
+    
+    /// <summary>
+    /// Initialization property. Returns if the instance is initialized within the current scopestorage
+    /// </summary>
+    public static bool IsInitialized {
+        get {
+            return (bool) (ScopeStorage.CurrentScope[_isInitializedKey] ?? false);
+        }        
+        private set {
+            ScopeStorage.CurrentScope[_isInitializedKey] = value;
+        }
+    }
+
+    /// <summary>
+    /// Initializes the helper with UserVoice parameters
+    /// </summary>
+    /// <param name="key">Specifies UserVoice key</param>
+    /// <param name="host">Specifies UserVoice host address</param>
+    /// <param name="forum">Optional. Specifies UserVoice forum</param>
+    /// <param name="ssoKey">Optional. Specifies UserVoice key for single sign on</param>
+    /// <param name="apiKey">Optional. Specifies Uservoice api key for api functionality</param>
+    public static void Initialize(string key, string host, string forum="", string ssoKey = null, string apiKey = null) {
+        Key = key;
+        Host = host;
+        Forum = forum;
+        SSOKey = ssoKey;
+        ApiKey = apiKey;
+
+        if (!key.IsEmpty() && !Host.IsEmpty()) {
+            IsInitialized = true;
+        }
+    }
+    
+    private static string Key {
+        get {
+            return (string) (ScopeStorage.CurrentScope[_userVoiceKey] ?? "");
+        }        
+        set {
+            ScopeStorage.CurrentScope[_userVoiceKey] = value;
+        }
+    }
+    
+    private static string Host {
+        get {
+            return (string) (ScopeStorage.CurrentScope[_hostKey] ?? "");
+        }        
+        set {
+            ScopeStorage.CurrentScope[_hostKey] = value;
+        }
+    }
+    
+    private static string Forum {
+        get {
+            return (string) (ScopeStorage.CurrentScope[_forumKey] ?? "");
+        }        
+        set {
+            ScopeStorage.CurrentScope[_forumKey] = value;
+        }
+    }
+    
+    private static string SSOKey {
+        get {
+            return (string) (ScopeStorage.CurrentScope[_ssoKey] ?? "");
+        }        
+        set {
+            ScopeStorage.CurrentScope[_ssoKey] = value;
+        }
+    }
+    
+    private static string ApiKey {
+        get {
+            return (string) (ScopeStorage.CurrentScope[_apiKey] ?? "");
+        }        
+        set {
+            ScopeStorage.CurrentScope[_apiKey] = value;
+        }
+    }
+        
+}

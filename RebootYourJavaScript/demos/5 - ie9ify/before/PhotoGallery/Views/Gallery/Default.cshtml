@@ -1,0 +1,24 @@
+﻿@using WebMatrix.WebData;
+
+<h1>Galleries</h1>
+@if (Model.Count == 1) {
+    <p>There is one gallery.</p>
+} else {
+    <p>There are @Model.Count galleries.</p>
+}
+<ul class="thumbnails gallery">
+    @foreach (var gallery in Model) {
+        <li class="gallery">
+            <a href="@Url.Action("View", new { id = gallery.Id })">
+                <img alt="Images from @gallery.Name" src="@Url.Action("Thumbnail", new { id = gallery.Id })" class="thumbnail-no-border" />
+                <span class="below-image">@gallery.Name</span>
+                <span class="image-overlay">@gallery.PhotoCount photo(s)</span>
+            </a>
+        </li>
+    } 
+</ul>
+<p class="actions">
+@if (WebSecurity.IsAuthenticated) {
+    <a href="@Url.Action("New")">Create a New Gallery</a>
+}
+</p>

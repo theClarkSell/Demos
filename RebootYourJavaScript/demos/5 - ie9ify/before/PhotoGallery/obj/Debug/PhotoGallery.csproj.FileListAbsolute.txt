@@ -1,0 +1,44 @@
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\bin\after.dll
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\bin\after.pdb
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\bin\Microsoft.Web.Helpers.dll
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\bin\UserVoiceApi.dll
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\bin\WebMatrix.Data.dll
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\bin\WebMatrix.WebData.dll
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\bin\WebMatrix.Data.xml
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\bin\WebMatrix.WebData.xml
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\obj\Debug\after.dll
+C:\Development\MSDNMag-WebPagesToMVC\after\after\after\obj\Debug\after.pdb
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\bin\Microsoft.Web.Helpers.dll
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\bin\UserVoiceApi.dll
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\bin\WebMatrix.Data.dll
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\bin\WebMatrix.WebData.dll
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\bin\WebMatrix.Data.xml
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\bin\WebMatrix.WebData.xml
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\bin\PhotoGallery.dll
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\bin\PhotoGallery.pdb
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\obj\Debug\PhotoGallery.dll
+C:\Development\Presentations\MvcScreencasts\PhotoGallery\PhotoGallery\obj\Debug\PhotoGallery.pdb
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\bin\PhotoGallery.dll
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\bin\PhotoGallery.pdb
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\bin\Microsoft.Web.Helpers.dll
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\bin\UserVoiceApi.dll
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\bin\WebMatrix.Data.dll
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\bin\WebMatrix.WebData.dll
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\bin\WebMatrix.Data.xml
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\bin\WebMatrix.WebData.xml
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\obj\Debug\PhotoGallery.dll
+C:\Development\wm2mvc\after\PhotoGallery\PhotoGallery\obj\Debug\PhotoGallery.pdb
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\bin\PhotoGallery.dll
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\bin\PhotoGallery.pdb
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\bin\Microsoft.Web.Helpers.dll
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\bin\UserVoiceApi.dll
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\bin\WebMatrix.Data.dll
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\bin\WebMatrix.WebData.dll
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\bin\WebMatrix.Data.xml
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\bin\WebMatrix.WebData.xml
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\obj\Debug\PhotoGallery.dll
+C:\Users\csell\Dropbox\WebCamps\3-jQuery\Reboot your JavaScript\demos\5 - ie9ify\before\PhotoGallery\obj\Debug\PhotoGallery.pdb

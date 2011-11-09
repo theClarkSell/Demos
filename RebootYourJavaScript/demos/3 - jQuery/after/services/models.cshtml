@@ -1,0 +1,15 @@
+﻿@using System.Dynamic;
+
+@{
+    var model = Request["Model"];
+    
+    List<Car> cars = new List<Car>();
+
+    for( int i = 0; i < 10; i++ ) {
+        cars.Add( new Car() { Model = model, Year = "197" + i.ToString() } );    
+    } 
+    
+    Response.ContentType = "application/json";
+    Response.Write(Json.Encode(cars));
+    
+}

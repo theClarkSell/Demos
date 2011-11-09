@@ -1,0 +1,31 @@
+﻿<h1>@Model.TagName</h1>
+
+@if (Model.Photos.Count == 0) {
+    <p>There are no photos with this tag.</p>
+} else {
+    if (Model.Photos.Count == 1) {
+        <p>There is one photo with this tag.</p>
+    } else {
+        <p>There are @Model.Photos.Count photos with this tag.</p>
+    }
+
+    <ul class="thumbnails">
+        @foreach (var photo in Model.Photos) {
+            <li>
+                <a href="@Url.Action("View", "Photo", new { id = photo.Id })">
+                    <img alt="thumbnail of @Path.GetFileNameWithoutExtension(photo.FileTitle)" src="@Url.Action("Thumbnail", "Photo", new { id = photo.Id })" class="thumbnail-border" />
+                    <span class="image-overlay">@Path.GetFileNameWithoutExtension(photo.FileTitle)</span>
+                </a>
+            </li>
+        }
+    </ul>
+
+    if (Model.SimilarTags.Count > 0) {
+        <h2 class="similar-tags">Similar tags:</h2>
+        <ul class="tags">
+            @foreach (var t in Model.SimilarTags) {
+                <li class="tag"><a href="@Url.Action("View", "Tag", new { id = t.TagName })">@t.TagName</a></li>
+            }
+        </ul>
+    }
+}

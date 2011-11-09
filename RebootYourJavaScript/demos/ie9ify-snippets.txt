@@ -1,0 +1,114 @@
+///////////////////////////////
+//add ie9ify js file
+
+		<script src="@Url.Content("~/Scripts/jquery.ie9ify.js")" type="text/javascript"></script>
+
+///////////////////////////////
+//jQuery Block
+		
+		<script type="text/javascript">
+            $(function () {
+			
+			});
+		</script>
+
+///////////////////////////////
+//Add IE9ify
+
+				$('head').ie9ify({
+                    navColor: 'Yellow',
+                    tasks: [
+                        {
+                            'name': 'Galleries',
+                            'action': '/Gallery',
+                            'icon': '/Content/Images/icon-gallery.ico'
+                        },
+                        {
+                            'name': 'Tags',
+                            'action': '/Tag',
+                            'icon': '/Content/Images/icon-tags.ico'
+                        },
+                        {
+                            'name': 'Account',
+                            'action': '/User',
+                            'icon': '/Content/Images/icon-account.ico'
+                        }
+                    ]
+                });
+///////////////////////////////
+//Pin the Logo
+		
+                $('#site-logo').ie9ify('enablePinning');
+///////////////////////////////
+//Add PinTeaser				
+
+                $('#header').ie9ify('pinTeaser', {
+                    addStartLink: false
+                });
+///////////////////////////////
+//Check is Pinned
+
+				if ($.ie9ify.isPinned()) {
+				
+				}
+///////////////////////////////
+//Add Dynamic JumpList ( if pinned )
+                
+                    $.getJSON('Gallery/List', function (data) {
+                        var itemList = [];
+
+                        $.each(data, function (key, val) {
+                            var item = {
+                                'name': data[key].name,
+                                'url': 'Gallery/View/' + data[key].id,
+                                'icon': '/Content/Images/icon-gallery.ico'
+                            };
+
+                            itemList.push(item);
+                        });
+
+                        $.ie9ify.addJumpList({
+                            title: 'Photo Galleries',
+                            items: itemList
+                        });
+                    });
+///////////////////////////////
+//Add ThumbBar Buttons ( if pinned )
+
+                    $.ie9ify.createThumbbarButtons({
+                        buttons: [{
+                            icon: '/Content/Images/download.ico',
+                            name: 'Download Images',
+                            click: function () {
+                                document.location = 'Gallery';
+                            }
+                        },
+                        {
+                            icon: '/Content/Images/icon-tags.ico',
+                            name: 'Tag Images',
+                            click: function () {
+                                document.location = 'Tag';
+                            }
+                        }]
+                    });
+///////////////////////////////
+//Comment Overlays and Notification ( if pinned )
+                    
+					setInterval(function () {
+                        $.getJSON('Photo/CommentsForUser/' + new Date().getTime() , function (data) {
+                            $.ie9ify.clearOverlay();
+
+                            var itemList = [];
+                            var commentCount = parseInt($('#commentCount').val());
+
+                            if (data.length > commentCount) {
+                                $.ie9ify.flashTaskbar();
+                                $('#commentCount').val(data.length);
+
+                                $.ie9ify.addOverlay({
+                                    title: 'New comment: ' + data[0].text + ' (' + data[0].date + ')',
+                                    icon: '/Content/Images/comment.ico'
+                                });
+                            }
+                        });
+                   }, 5000);

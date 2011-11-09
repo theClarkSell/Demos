@@ -1,0 +1,10 @@
+﻿@using Microsoft.Web.Helpers;
+
+<h1>Upload Photo</h1>
+
+<p>
+    The photo you upload will be placed in the
+    <a class="italic" href="@Url.Action("View", new { id = Model.Id })">@Model.Name</a> gallery.
+</p>
+
+@FileUpload.GetHtml()

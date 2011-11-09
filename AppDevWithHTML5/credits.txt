@@ -1,0 +1,6 @@
+all credit goes to Brandon Satrom. 
+
+The original is here: https://github.com/csell5/Presentations/tree/master/AppDevWithHTML5
+This is just my copy with my edits
+
+You should check out Brandon at http://userInExperience.com

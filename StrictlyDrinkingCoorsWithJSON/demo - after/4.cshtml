@@ -1,0 +1,29 @@
+﻿@{
+    Page.Title = "JSON.parse";
+}
+
+@section scripts{
+    
+    <script src="/scripts/sampleJSON.js"></script>
+    <script>
+
+        $(document).ready( function () { 
+        
+            var convert = function ( key, value ) {
+                
+                if ( key === 'firstName' ) {
+                    value = "something else"
+                }  
+                
+                return value;
+            };
+            
+            var results = JSON.parse(sampleJsonString, convert);
+            
+            $('#results').text(results.firstName);
+    
+        });
+    </script>
+}
+
+<div id=results></div>

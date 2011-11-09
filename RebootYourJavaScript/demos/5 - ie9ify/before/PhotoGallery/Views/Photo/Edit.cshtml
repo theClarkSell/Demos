@@ -1,0 +1,27 @@
+﻿<div class="sidebar">
+    <h1>Edit Photo</h1>
+    <form method="post" action="">
+        <fieldset class="no-legend">
+            <legend>Edit Photo</legend>
+            <ol>
+                <li>
+                    <label for="fileTitle">Name:</label>
+                    <input type="text" id="fileTitle" name="fileTitle" title="Photo name" value="@Model.FileTitle" placeholder="Photo Name" />
+                    @Html.ValidationMessage("Name")
+                </li>
+                <li>
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" title="Photo description" rows="4" cols="30" placeholder="Photo description">@Model.Description</textarea>
+                    @Html.ValidationMessage("FileDescription")
+                </li>
+            </ol>
+            <p class="form-actions">
+                <input type="submit" value="Save Changes" title="Save changes" />
+                <a href="@Url.Action("View", new { id = Model.Id })" title="Cancel changes">Cancel</a>
+            </p>
+        </fieldset>
+    </form>
+</div>
+<div class="main">
+    <img alt="@Html.AttributeEncode(Model.FileTitle)" src="@Url.Action("Thumbnail", new { id = Model.Id, size="large" })" />
+</div>

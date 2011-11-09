@@ -1,0 +1,33 @@
+﻿<h1>Login</h1>
+
+<p>
+    Please enter your email and password below. If you don't have an account,
+    please @Html.ActionLink("Register", "Register").
+</p>
+
+@Html.ValidationSummary()
+
+<form method="post" action="">
+    <fieldset class="no-legend">
+        <legend>Login</legend>
+        <ol>
+            <li class="email">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" title="Email Address" placeholder="Email address" />
+                @Html.ValidationMessage("email")
+            </li>
+            <li class="Password">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" title="Password" />
+                @Html.ValidationMessage("password")
+            </li>
+            <li class="remember-me">
+                <label class="checkbox" for="rememberMe">Remember Me?</label>
+                <input type="checkbox" id="rememberMe" name="rememberMe" value="true" title="Remember Me" />
+            </li>
+        </ol>
+        <p class="form-actions">
+            <input type="submit" value="Login" title="Login" />
+        </p>
+    </fieldset>
+</form>

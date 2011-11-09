@@ -1,0 +1,17 @@
+﻿<h1>New Gallery</h1>
+<form method="post" action="">
+    <fieldset>
+        <legend>New Gallery</legend>
+        <ol>
+            <li>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" title="Gallery name" placeholder="Gallery name" />
+                @Html.ValidationMessage("Name")
+            </li>
+        </ol>
+        <p class="form-actions">
+            <input type="submit" value="Create" title="Create gallery" />
+            <a href="@Url.RouteUrl("Default")" title="Return to galleries">Cancel</a>
+        </p>
+    </fieldset>
+</form>

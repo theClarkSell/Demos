@@ -1,0 +1,68 @@
+﻿
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready( function () {
+            
+            var a = "a";
+            
+            ( function () {
+                var b = "b";
+        
+                ( function () {
+                    var c = "c";
+                    
+                    ( function () {
+                        write("a: " + a);    
+                        write("b: " + b);
+                        write("c: " + c);
+                    } ) ();
+                    
+                })();
+                
+            })();
+            
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@{
+    /* 
+        DEMO SCRIPT
+            Purpose is to create a set of nested var's and functions where the inner most function prints the values from the outter functions
+        
+        
+        Finished Code:
+        
+        var a = "a";
+            
+            ( function () {
+                var b = "b";
+        
+                ( function () {
+                    var c = "c";
+                    
+                    ( function () {
+                        write("a: " + a);    
+                        write("b: " + b);
+                        write("c: " + c);
+                    } ) ();
+                    
+                })();
+                
+            })();
+
+    */
+}

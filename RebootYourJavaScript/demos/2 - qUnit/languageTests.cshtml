@@ -1,0 +1,301 @@
+﻿
+@section tests {
+
+  <script type="text/javascript">
+       
+        test('Variables', function() {
+            
+            //Undefined Variables
+            var one, two;
+            equal( one, undefined, "When defined multiple variables with var but nothing assigned the value will be 'undefined'");
+            equal( two, undefined, "When defined multiple variables with var but nothing assigned the value will be 'undefined'");
+            
+            one = 1;
+            two = 2;
+            
+            equal( one, 1, "when assigned 1 to a variable it was set to 1");
+            equal( two, 2, "when assigned 1 to a variable it was set to 2");
+            
+            //Scoped Variables
+            var willBeString = "Camaro";
+            var willBeInt = 1;
+            
+            equal( typeof(willBeString), typeof("string"), "when a variable is assigned a value the type will automatically set.");
+            equal( typeof(willBeInt), typeof(1), "when a variable is assigned a value the type will automatically set.");
+            
+            var car2 = "Camaro";
+            var car3 = "camaro";
+            
+            notEqual(car2, car3, "two primatives with different values are not equal");
+        });  
+        
+        test('Global Variables', function() {
+            
+            var myAddFunction = function(a, b) {
+                first = a; // 'a' is getting set to the global variable 'first'
+                var anotherVariable; // This would be scoped to the function it's in
+                return a + b;
+            };
+            
+            first = 1;
+            var second = 2;
+            
+            equal(first, 1, "The 'first' variable is a global variable and is set to 1");
+            equal(second, 2, "Second local variavel is set to 2");
+            
+            //Now call the function
+            equal(3, myAddFunction(first, second));
+            
+            equal(first, 1, "first was still 1");
+            equal(second, 2, "second was still 2");
+            
+            //Now call the function again with different values
+            equal(20, myAddFunction(10, 10), "Called the my addfunction with 10, 10");
+            notEqual(1, first, "first is now equal to what the function set it to");
+            equal(10, first, "this is the new value of first given it was what was passed into");
+        });
+        
+        test('Undefined Variables', function() {
+            
+            var undefindedObject;
+            
+            ok(!undefindedObject, "when defining an undefined object it will evualate to fall when used in a boolean expression");
+            
+        });
+        
+        test('Using Null', function() {
+            
+            var nullValue = null;
+            
+            ok(!nullValue, "when a type is set to null it will evualate to false in a boolean expression");
+            
+            //Exceptions to the rule are 0 and empty value
+            var emptyValue = "";
+            var zeroValue = 0;
+            
+            ok(!emptyValue, "When a primitive type is set to an empty value it will return false in a boolean expression");
+            ok(!zeroValue, "When a primitive type is set to a 0 value it will return false in a boolean expression");
+            
+        });
+        
+        test('Objects', function () {
+            var person = {
+                firstName: "Clark",
+                lastName: "Sell",
+                address: {
+                    streetAddress: "9109 Carol",
+                    city: "Spring Grove"
+                }
+            };
+            
+            var emptyObject = {};
+            ok(emptyObject, "when defining an empty object it will evaluate to true when in boolean expression");
+            
+            var objectViaNew = new Object();
+            objectViaNew.something = "something";
+            equal(objectViaNew.something, "something", "You can define an object with the new keyword. 'var name = new Object()' ");
+        });                    
+  
+        test('Equality', function() {
+            
+            var car1 = "Camaro";
+            var car2 = "Camaro";
+            var car3 = "camaro";
+            
+            ok( car1 === car2, "When checking value equality the === should be used.");
+            ok( car1 !== car3, "When checking value inequality the !== should be used.");
+            
+        });
+        
+        test('Function Basics', function() {
+            /*
+                Functions are objects that can be invoked.
+                Parameter Flexibility...  To many or to few paramters will not cause an error.  They will just be initalized as 'undefined'
+                ** Object parameters are passed 'By Reference'
+                ** Primitive types are passed 'By Value'
+            */                
+            
+            function basicFunction() {
+                return true;
+            };
+            
+            ok(basicFunction, "You can define a basic function ex: 'function NAME(PARM, PARM)'");
+            
+            //Assigned function with name. You cannot call the function by the name but rather the variable it was assigned to.
+            var assignedFunction  = function basicFunction2() {
+                return true;
+            };
+            
+            ok(assignedFunction, "You can define an assigned function ( function set to a variable ) ex: 'var variableName = function NAME (PARM, PARM'");
+            
+            //This function while the same above the name will not appear in the call stack
+            var assignedFunction2  = function () {
+                return true;
+            };
+            
+            ok(assignedFunction2, "You can define an assigned function and omit the function name ex: 'var variableName = function ([params,params])'");
+            
+            
+            /*
+                Anon and immediately invoked function
+                this is the way jQuery plugins work.
+            */
+            var AnonAndImmediate = "foo";
+            
+            (function() {
+                ok(true, "nothing");
+            })();
+            
+            (function(foo) {
+                equals("foo", foo, "foo was === foo");
+            })(AnonAndImmediate);
+            
+            
+            
+            //ok(AnonAndImmediate, "anonymous and immediately invoked function alaised as AnonAndImmediate was called");
+            //A concrete patter
+            
+            
+            //Example jQuery
+            
+            ( function ($) {
+                ok(true, "my jQuery Anon but immediate was called");
+            })(jQuery);
+            
+            /*
+                Function Matching...
+                There is no such concept of overloading
+            */
+            function add ( num1, num2, num3 ) {
+                return num1 + num2 + num3;
+            };
+            
+            //This add will overwrite the add we just declared.
+            function add ( num1, num2 ) {
+                return num1 + num2;
+            };
+            
+            equal( add(1,1,1), 2, "Called the add function with 3 variables, the extra parameter was ignored.");
+            equal( add(1,1), 2, "Called the add function with 2 variables");
+            
+            /*
+                Functions and Arguments
+                Arguments is a reserved object of JavaScript and is of type object
+            */
+            
+            function echoFirstArgument() {
+                return arguments[0];
+            };
+            
+            equal( echoFirstArgument("Hello World"), "Hello World", "a function will create an arguments object with whatever the parameters are passed into it" );
+            
+            function echoFirstArgumentWithParamsDefined(something) {
+                return arguments[0];
+            };
+            
+            equal( echoFirstArgumentWithParamsDefined("Hello World"), "Hello World", "Regardless of the parameters the function defines arguments will still be created and populated"  );
+            
+            /*
+                Function Recursion, a function can call itself BUT EXIT
+                Closure and Nested functions
+            */
+            var a = "a";
+            var outer = function () {
+                var b = "b";
+                var middle = function () {
+                    var c = "c";
+                    var inner = function () {
+                        equal(a, "a", "Closure a");    
+                        equal(b, "b", "Closure b");
+                        equal(c, "c", "Closure c");
+                    };
+                    inner();
+                };
+                middle();
+            };
+            outer();
+            
+            var selector = '.showName';
+            
+            ( function() { 
+                $.get('http://developerSmackdown.com', function(data) {
+                    $(selector).html(data);
+                    window.alert("ASDF");
+                });
+            })();
+        });
+        
+        test('Function Override', function() {
+            var person = {
+                firstName: "Clark",
+                lastName: "Sell",
+                address: {
+                    streetAddress: "9109 Carol",
+                    city: "Spring Grove"
+                }
+            };
+            
+            equal(person.toString(), "[object Object]", "when calling the default toString method on an object we will see [object Object]" );
+            
+            person.toString = function() {
+                return "Name: " + this.firstName + " " + this.lastName;
+            };
+            
+            equal(person.toString(), "Name: Clark Sell", "A method can be replaced by simply resetting it down the script change. the toString method is our own implementation");
+        });
+        
+        test('Namespacing', function() {
+            
+        });
+        
+        test('Control Flow - For In', function() {
+            var car = { 
+                year: "1970",
+                make: "chevy",
+                model: "camaro"
+            };
+
+            for( var key in car ) {
+                window.alert(key);
+                window.alert(car[key]);
+            };
+        });
+        
+        test('Control Flow - while', function() {
+
+            var keepGoing = true;
+            
+            while( keepGoing ) {
+              keepGoing = false;  
+            };
+
+            do{
+                //Was set in false in the previous loop
+            } while ( keepGoing  );
+            
+        });
+        
+        test('Control Flow - Exceptions', function() {
+            try {
+                throw {
+                    name: "anything",
+                    message: "my message"
+                };    
+            } catch (e) {
+                equal(e.name, "anything", "exception caught");
+                equal(e.message, "my message", "exception caught");
+            } finally {
+                ok(true, "in finally block");
+            }
+        });
+
+       
+        window.alert = function () {
+            try {
+                window.console.log(arguments[0]);  
+            } catch (e) {}
+        };
+        
+    </script>
+        
+}

@@ -1,0 +1,19 @@
+﻿<div class="sidebar">
+    <h1>@Model.FileTitle</h1>
+    <h2 class="confirm-removal">Confirm Removal</h2>
+    <p class="message error"> 
+        Removing this photo will permanently delete the file from the photo gallery site 
+        and you will lose all associated data (description, tags, and comments). You may 
+        want to download the <a href="@Url.Action("Full", "Photo", new { id = Model.Id })" title="Download: @(Model.FileTitle + Model.FileExtension)">full size photo</a> before continuing. 
+    </p>
+
+    <form method="post" action="">
+        <p class="form-actions">
+            <input type="submit" value="Remove" title="Remove photo" />
+            <a href="@Url.Action("View", "Photo", new { id = Model.Id })" title="Do not remove photo">Cancel</a>
+        </p>
+    </form>
+</div>
+<div class="main">
+    <img src="@Url.Action("Thumbnail", "Photo", new { id = Model.Id, size = "large" })" />
+</div>
