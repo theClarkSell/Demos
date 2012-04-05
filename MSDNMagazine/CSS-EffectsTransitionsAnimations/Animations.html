@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    
+    <title>MSDN Magazine - CSS3 Effects Transitions and Animations</title>
+    <meta name="author" content="Clark Sell"/>
+
+    <link rel="stylesheet" type="text/css" href="./base.css" />
+    <style>
+
+      #boxTrans
+        {
+            background-color: white;
+            border-color: black;
+            color:  black;
+            
+            transition: all .5s linear;
+            -webkit-transition: all .5s linear;
+            -moz-transition: all .5s linear;
+            -o-transition: all .5s linear;
+        }
+        
+            #boxTrans:hover
+            {
+                background-color: #808080;
+                color: white;
+                border-color: #4cff00;
+                border-width: 3px;
+            }
+        
+        #myButton
+        {
+            background-color: white;
+            border-color: black;
+            color:  black;
+            
+            transition: all .5s linear;
+            -webkit-transition: all .5s linear;
+            -moz-transition: all .5s linear;
+            -o-transition: all .5s linear;
+        }
+
+            #myButton:hover
+            {
+                background-color: #808080;
+                color: red;
+                border-color: green;
+            }
+        
+    </style>
+
+</head>
+<body>
+    <div class="center">
+        
+        <div class="section">
+            <h1>CSS Transistions</h1>
+            <p>what about a transition??</p>
+        </div>
+
+        <div class="section">
+            <div class="box" id="boxTrans">This is a box of awesome!</div>
+        </div>
+        
+        <button id="myButton">
+            Click Me
+        </button>
+    
+    </div>
+    
+</body>
+</html>

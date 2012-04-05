@@ -1,0 +1,25 @@
+.center
+{
+    padding-top: 2em;
+    text-align: center;
+}
+
+.section
+{
+    padding-bottom: 1em;
+    margin-bottom: 3em;
+            
+    border-bottom: 2px solid grey    
+}
+
+.box
+{
+    margin: 0 auto;
+            
+    border: 1px solid #fff;
+            
+    background-color: #808080;
+    width: 150px;
+    height: 150px;
+            
+}
