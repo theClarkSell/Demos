@@ -21,43 +21,99 @@
         }
 
        #boxAnimation {
+            -ms-animation: 'not-knight-rider';
+            -ms-animation-duration: 5s;
+            -ms-animation-iteration-count: 10;
+
             -webkit-animation: 'not-knight-rider';
             -webkit-animation-duration: 5s;
             -webkit-animation-iteration-count: 10;
+
+            /* don't forget about the other browswer prefixes */
         }
 
+        @-ms-keyframes not-knight-rider-base {
+          from {
+            left: -100px;
+            animation-timing-function: ease-out;
+          }
 
-        @-webkit-keyframes not-knight-rider {
-            from {
-              left: -100px;
-              -moz-opacity: 0;
-              filter:alpha(opacity=);
-              animation-timing-function: ease-out;
-            }
+          to {
+            left: -100px;
+          }
+        }
 
-            25% {
-              left: 100px;
-              opacity: 0.5;
-              animation-timing-function: ease-in;
-            }
+        @-webkit-keyframes not-knight-rider-base {
+          from {
+            left: -100px;
+            animation-timing-function: ease-out;
+          }
 
-            50% {
-              left: -100px;
-              opacity: 0;
-              animation-timing-function: ease-out;
-            }
+          to {
+            left: -100px;
+          }
+        }
 
-            75% {
-              left: 100px;
-              opacity: 0.5;
-              animation-timing-function: ease-in;
-            }
+        @-ms-keyframes not-knight-rider {
+          from {
+            left: -100px;
+            opacity: 0;
+            animation-timing-function: ease-out;
+          }
 
-            to {
-              left: -100px;
-              opacity: 0;
-            }
+          25% {
+            left: 100px;
+            opacity: 0.5;
+            animation-timing-function: ease-in;
+          }
 
+          50% {
+            left: -100px;
+            opacity: 0;
+            animation-timing-function: ease-out;
+          }
+
+          75% {
+            left: 100px;
+            opacity: 0.5;
+            animation-timing-function: ease-in;
+          }
+
+          to {
+            left: -100px;
+            opacity: 0;
+          }
+        }
+
+         @-webkit-keyframes not-knight-rider {
+          from {
+            left: -100px;
+            opacity: 0;
+            animation-timing-function: ease-out;
+          }
+
+          25% {
+            left: 100px;
+            opacity: 0.5;
+            animation-timing-function: ease-in;
+          }
+
+          50% {
+            left: -100px;
+            opacity: 0;
+            animation-timing-function: ease-out;
+          }
+
+          75% {
+            left: 100px;
+            opacity: 0.5;
+            animation-timing-function: ease-in;
+          }
+
+          to {
+            left: -100px;
+            opacity: 0;
+          }
         }
         
     </style>
@@ -68,7 +124,7 @@
         
         <div class="section">
             <h1>CSS Animations</h1>
-            <p>Awesome here</p>
+            <p>Own the element of time.</p>
         </div>
 
         <div class="section">
