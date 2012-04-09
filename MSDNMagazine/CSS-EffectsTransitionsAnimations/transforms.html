@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    
+    <title>MSDN Magazine - CSS3 Effects Transitions and Animations</title>
+    <meta name="author" content="Clark Sell"/>
+
+    <link rel="stylesheet" type="text/css" href="./base.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <style>
+
+        .img
+        {
+            width: 50px;
+            height: 100px;   
+            position: relative;                 
+        }
+
+        #myImg
+        {
+            transition: all 2s ease-in-out;
+            -webkit-transition: all 2s ease-in-out;
+            -moz-transition: all 2s ease-in-out;
+            -o-transition: all 2s ease-in-out;
+            -ms-transition: all 2s ease-in-out;  
+        }
+
+        #myImg:hover {
+            transform: scale(2);
+            -webkit-transform: scale(2);
+            -moz-transform: scale(2);
+            -o-transform: scale(2);
+            -ms-transform: scale(2);
+
+            z-index: 1000;
+        }
+
+        .box
+        {
+            border: 1px solid black;
+            background-color: red;               
+        }
+
+        .transform2d {
+            -webkit-transform-origin-x: 50%;
+            -webkit-transform-origin-y: 50%;
+            -webkit-transform: translate(0px, 0px) rotate(47deg) scale(1.45) skew(0deg, 0deg);
+    
+        }
+
+        .transform3d {
+            -webkit-transform-origin-x: 50%;
+            -webkit-transform-origin-y: 50%;
+            -webkit-transform: perspective(110px) rotateY(45deg);
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="center">
+        
+        <div class="section">
+            <h1>CSS Transforms</h1>
+            <p>Making things more awesome than they started!</p>
+        </div>
+
+        <div class="section">
+            <img class="img" id="myImg" src="images/html5_css3_styling.svg">
+        </div>
+        
+        <!-- add some jquery here with a couple of buttons to make it pop and reset.  -->
+
+        <div class="section">
+            <button id="btn2d">Transform 2D</button>
+            <button id="btn3d">Transform 3D</button>
+            <button id="reset">Reset</button>
+        </div>
+
+        <div class="section">
+            <div class="box" id="transformBox">A Box of Awesome</div>
+        </div>
+
+    </div>
+
+        <script type="text/javascript">
+
+        $(document).ready(function () {
+            
+            $('#btn2d').click(function () {
+                $("#transformBox").addClass("transform2d");
+            });
+
+            $('#btn3d').click(function () {
+                $("#transformBox").addClass("transform3d");
+            });
+
+            $('#reset').click(function () {
+                $("#transformBox").removeClass("transform2d transform3d");
+            });
+        });
+
+    </script>
+    
+</body>
+</html>
