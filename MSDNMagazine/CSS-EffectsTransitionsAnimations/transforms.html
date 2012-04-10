@@ -20,21 +20,22 @@
 
         #myImg
         {
-            transition: all 2s ease-in-out;
-            
             -webkit-transition: all 2s ease-in-out;
             -moz-transition: all 2s ease-in-out;
             -o-transition: all 2s ease-in-out;
             -ms-transition: all 2s ease-in-out;  
+
+            transition: all 2s ease-in-out;
         }
 
         #myImg:hover {
-            transform: scale(2);
 
             -webkit-transform: scale(2);
             -moz-transform: scale(2);
             -o-transform: scale(2);
             -ms-transform: scale(2);
+
+            transform: scale(2);
 
             z-index: 1000;
         }
@@ -45,29 +46,29 @@
             background-color: red;               
         }
 
-        .transform2d, .transform3d {
-            transform-origin-x: 50%;
-            transform-origin-y: 50%;
-
+        .transform3d {
             -ms-transform-origin-x: 50%;
             -ms-transform-origin-y: 50%;
 
             -webkit-transform-origin-x: 50%;
             -webkit-transform-origin-y: 50%;
 
+            transform-origin-x: 50%;
+            transform-origin-y: 50%;
+
             /* don't forget about the other browswer prefixes */
         }
 
         .transform2d {
-            transform: translate(0px, 0px) rotate(47deg) scale(1.45) skew(0deg, 0deg);
             -ms-transform: translate(0px, 0px) rotate(47deg) scale(1.45) skew(0deg, 0deg);
             -webkit-transform: translate(0px, 0px) rotate(47deg) scale(1.45) skew(0deg, 0deg);
+            transform: translate(0px, 0px) rotate(47deg) scale(1.45) skew(0deg, 0deg);
         }
 
         .transform3d {
-            transform: perspective(110px) rotateY(45deg);
             -ms-transform: perspective(110px) rotateY(45deg);
             -webkit-transform: perspective(110px) rotateY(45deg);
+            transform: perspective(110px) rotateY(45deg);
         }
 
     </style>
