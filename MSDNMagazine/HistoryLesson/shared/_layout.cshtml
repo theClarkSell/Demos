@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        
+        <title>MSDN Magazine - History Lesson</title>
+        <meta name="author" content="Clark Sell"/>
+         
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+        <script>
+        
+            $(document).ready( function () { 
+            
+                $("#results").append( "history.length = " + window.history.length );
+
+                $("#back").click ( function () {
+                    window.history.back();    
+                });
+
+                $("#forward").click ( function () {
+                    window.history.forward();    
+                });
+
+                $("#goBy").click ( function () {
+                    window.history.go($("#numOfSteps")[0].value);    
+                });
+
+                window.onpopstate = function ( event ) { 
+                    
+                    console.log("popstate called - old url: ");
+
+                };
+
+                window.onhashchange = function ( event ) { 
+                    
+                    console.log("hashchanged called - old url: " + event.oldURL);
+                };
+
+            });
+        
+        </script>
+        
+    </head>
+    <body>
+        @RenderBody()
+                
+        <hr/>
+
+        <button id="back">go back with history api</button>
+        <button id="forward">go forward with history api</button>
+        
+        <br/>
+        <br/>
+        <input type="text" id="numOfSteps" placeholder="+/- N"/>
+        <button id="goBy">go by #</button>
+        
+        <hr/>
+        <div id="results"></div>
+        
+        @RenderSection( "BottomScripts", false )
+        
+    </body>
+</html>

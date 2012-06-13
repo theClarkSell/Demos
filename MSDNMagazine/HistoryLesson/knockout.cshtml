@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        
+        <title>MSDN Magazine - History Lesson</title>
+        <meta name="author" content="Clark Sell"/>
+         
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="/scripts/knockout-2.1.0rc2.js"></script>
+        
+        
+        <script>
+
+            $(document).ready( function () {
+                
+                var step1 = {
+                    firstName: "Clark",
+                    lastName: "DOGGIE",
+                    time: new Date().getTime()
+                };
+
+                ko.applyBindings( step1 );
+            
+                $("#btn1").click ( function () {
+
+                    step1.time = new Date().getTime();
+
+                    var state = JSON.stringify(step1);
+
+                    window.history.pushState(state, step1.time, "#!/" + step1.time)
+                    ko.applyBindings( step1 );    
+                            
+                });   
+                
+                $("#btn2").click ( function () {
+                    
+                    window.history.back()
+                });     
+                
+                window.onhashchange = function() {
+                    alert("hash changed!");
+                };
+
+                window.onpopstate = function (event) { 
+                    console.log(event.state);
+                    ko.applyBindings( JSON.parse(event.state) );
+                };
+                
+            });
+            
+        
+        </script>
+    </head>
+    <body>
+        
+        <p>First name: <strong data-bind="text: firstName"></strong></p>
+        <p>Last name: <strong data-bind="text: lastName"></strong></p>
+        <p>Time: <strong data-bind="text: time"></strong></p>
+        
+        <button id="btn1">forward</button>
+        <button id="btn2">back</button>
+        <button id="btn3">replace</button>
+        
+        <p><a href="#foo">hash</a></p>
+        
+        <p><a name="foo">this is foo</a></p>
+        
+    </body>
+</html>
