@@ -37,12 +37,12 @@
             }
            
             var counter = 0;
-            $('#nextMeme').click( function () {
+            $('#nextSpeaker').click( function () {
                 counter = counter + 1;    
                 bind(counter);
             });
 
-            $('#prevMeme').click( function () {
+            $('#prevSpeaker').click( function () {
                 counter = counter - 1;
                 window.history.back();
             });
@@ -86,7 +86,7 @@
 <hr/>
 
 <div>
-    <button id="prevMeme">previous speaker</button>
-    <button id="nextMeme">next speaker</button>
+    <button id="prevSpeaker">previous speaker</button>
+    <button id="nextSpeaker">next speaker</button>
 </div>
 
