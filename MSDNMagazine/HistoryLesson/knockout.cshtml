@@ -29,7 +29,7 @@
 
                     var state = JSON.stringify(step1);
 
-                    window.history.pushState(state, step1.time, "#!/" + step1.time)
+                    window.history.pushState(state, step1.time, "/knockout/#!" + step1.time)
                     ko.applyBindings( step1 );    
                             
                 });   

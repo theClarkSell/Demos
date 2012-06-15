@@ -1,24 +1,92 @@
 
-<!DOCTYPE html>
+@{
+    Layout = "~/shared/_basicLayout.cshtml";    
+}
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
+@section BottomScripts {
+
+    
+    <script>
+        $(document).ready( function () { 
+            
+            var speakers = undefined;
+
+            function getSpeakers () {
+
+                $.ajax({
+                    url: "http://thatconference.com/api/person",
+                }).done(function(data) { 
+                    speakers = data;
+                    bind(0);
+                });
+            };
+
+            function speakerViewModel(id) {
+                this.speaker = speakers[id];
+                this.speakerId = id;
+            }
+            
+            function bind (speakerID) {
+                
+                var speakerVM = new speakerViewModel(speakerID);
+
+                var fullName = speakers[speakerID].FirstName + speakers[speakerID].LastName
+                window.history.pushState(speakerVM, fullName, "/#!" + fullName);  
+                
+                ko.applyBindings(speakerVM);
+            }
+           
+            var counter = 0;
+            $('#nextMeme').click( function () {
+                counter = counter + 1;    
+                bind(counter);
+            });
+
+            $('#prevMeme').click( function () {
+                counter = counter - 1;
+                window.history.back();
+            });
+            
+            window.onpopstate = function (event) { 
+                console.log('onpopstate event was fired');
+                ko.applyBindings( event.state );
+            };
+
+             window.onhashchange = function (event) { 
+                console.log('hashChanged event was fired');
+            };
+
+            var urlHash = window.location.hash;
+
+            if (urlHash) {
+                alert("this is where we should look up the speaker on the url rather than provide the default");
+            }
+            else {
+                 getSpeakers();
+            }
+
+        });
         
-        <title>MSDN Magazine - History Lesson</title>
-        <meta name="author" content="Clark Sell"/>
-         
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-        
-        
-        <script>
-        
-        
-        </script>
-    </head>
-    <body>
-        
-        
-        
-    </body>
-</html>
+    </script>
+}        
+
+<script type="text/html" id="person-template">
+    <div>
+        <p>
+            <strong data-bind="text: FirstName"></strong>
+            <strong data-bind="text: LastName"></strong>,
+            <span data-bind="text: Company"></span>
+        </p>
+        <p data-bind="text: Bio"></p>
+    </div>
+</script>
+
+<div data-bind="template: { name: 'person-template', data: speaker }"></div>
+
+<hr/>
+
+<div>
+    <button id="prevMeme">previous speaker</button>
+    <button id="nextMeme">next speaker</button>
+</div>
+
