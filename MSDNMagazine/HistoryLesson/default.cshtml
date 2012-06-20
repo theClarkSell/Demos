@@ -31,7 +31,7 @@
                 var speakerVM = new speakerViewModel(speakerID);
 
                 var fullName = speakers[speakerID].FirstName + speakers[speakerID].LastName
-                window.history.pushState(speakerVM, fullName, "/#!" + fullName);  
+                window.history.pushState(speakerVM, fullName, "/speakers/" + fullName);  
                 
                 ko.applyBindings(speakerVM);
             }
