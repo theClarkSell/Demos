@@ -1,0 +1,23 @@
+#OS junk files
+[Tt]humbs.db
+
+# build folders
+[Bb]ld
+[Bb]ld/
+[Oo]bj
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+TestResults
+
+#Excludes
+!**/packages/**/*
+!website/bin/**/*
+
+# resharper folder
+_Resharper.*
+
+# VS solution files
+*.suo
+*.user

@@ -1,0 +1,73 @@
+﻿
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+
+        <script src="/scripts/jquery-1.7.1.js"></script>
+	    <script src="/Scripts/knockout-2.1.0.js"></script>
+
+        <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+
+        <style>
+            body {
+                margin: 25px;
+            }
+            
+            h1, h2 {
+                font-family: 'Shadows Into Light Two', cursive; 
+            }
+            
+            h1 {
+                font-size: 4em;
+                background-color: white;
+                color: white;
+                text-shadow: black 2px 2px 10px;
+            }
+
+            #content {
+                margin: 25px;
+            }
+            .desc {
+                font-family: 'Source Code Pro', sans-serif;
+                margin:  25px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h1>Speakers</h1>
+        
+        <script type="text/html" id="speaker-template">
+		    <div class="item">
+
+                <h2 class="title">
+                    <span data-bind="text: FirstName"></span> <span data-bind="text: LastName"></span>
+                </h2>
+		        
+                <p class="desc" data-bind="text: Bio"></p>
+
+            </div>
+	    </script>
+
+	    <div id="content" data-bind="template: { name: 'speaker-template', foreach: d }"></div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    url: 'http://2012.thatconference.com/odata/api.svc/People',
+                    dataType: "json",
+
+                    success: function (data) {
+                        ko.applyBindings(data);
+                    }
+                });
+            });
+	    </script>
+
+    </body>
+</html>

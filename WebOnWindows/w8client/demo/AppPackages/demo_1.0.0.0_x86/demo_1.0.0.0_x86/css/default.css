@@ -1,0 +1,91 @@
+﻿
+
+body {
+
+	height: 100%;
+	width: 100%;
+
+	overflow-y: scroll;
+
+	display: -ms-grid;
+	-ms-grid-columns: 120px 1fr 120px;
+	-ms-grid-rows: 120px 1fr 120px;
+}
+
+
+header {
+	-ms-grid-column: 2;
+	-ms-grid-row: 1;
+
+	font-size: 500%;
+}
+
+
+#content {
+	-ms-grid-column: 2;
+	-ms-grid-row: 2;
+
+	display: -ms-box;
+	-ms-flex-align: middle;
+	-ms-flex-pack: justify;
+	-ms-flex-direction: normal;
+	-ms-flex-wrap: normal;
+}
+
+
+.item {
+	display: -ms-grid;
+	-ms-grid-columns: 1fr 120px;
+	-ms-grid-rows: 25px 1fr;
+
+	margin-bottom: 10px;
+}
+
+
+.title {
+	-ms-grid-row: 1;
+	-ms-grid-column: 1;
+}
+
+
+.desc {
+	-ms-grid-row: 2;
+	-ms-grid-column: 1;
+	padding-left: 25px;
+}
+
+
+.pic {
+	-ms-grid-row-span: 2;
+	-ms-grid-column: 2;
+
+	width: 100px;
+}
+
+
+@media screen and (-ms-view-state: fullscreen-landscape) {
+
+}
+
+@media screen and (-ms-view-state: filled) {
+	body {
+        background-color: dimgrey;
+    }
+}
+
+@media screen and (-ms-view-state: snapped) {
+    body {
+        background-color: blue;
+
+    	display: -ms-grid;
+	    -ms-grid-columns: 5px 1fr 5px;
+	    -ms-grid-rows: 120px 1fr 120px;
+    }
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+}
+
+
+
+
