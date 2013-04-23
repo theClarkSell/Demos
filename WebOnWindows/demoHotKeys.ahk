@@ -1,123 +1,175 @@
 ﻿
-; ------------------------
-; winrt - demo snippits
-; ------------------------
+; <><><><><><><><><><><><><><><>
+; WEB/W8 - demo snippits
+; <><><><><><><><><><><><><><><>
 
-::d11::
+; ------------------------------------------------
+; open folder in webmatrix
+; copy the scripts and folders over in powershell
+; ------------------------------------------------
+
+; ps: w8Copy.ps1
+
+; ------------------------------------------------
+; Add the scripts to the page
+; ------------------------------------------------
+::d21::
 clipboard =
 (
-	<button id="myButton">Make Call</button>
-	<textarea aria-multiline="true" id="results" aria-readonly="True">results here..</textarea>
+		<script src="/scripts/jquery-2.0.0.min.js"></script>
+	    <script src="/scripts/knockout-2.2.1.js"></script>
 )
 send ^v
 return
 
-::d12::
+; ------------------------------------------------
+; Add the knockout template
+; ------------------------------------------------
+
+::d22::
 clipboard =
 (
-	public static string HelloWorld(){
-		return "hello world";
+		<script type="text/html" id="speaker-template">
+		    <div class="item">
+
+                <h2 class="title">
+                    <span data-bind="text: FirstName"></span> <span data-bind="text: LastName"></span>
+                </h2>
+		        
+                <p class="desc" data-bind="text: Bio"></p>
+
+            </div>
+	    </script>
+)
+send ^v
+return
+
+; ------------------------------------------------
+; Reference the Knockout Template.
+; ------------------------------------------------
+
+::d23::
+clipboard =
+(
+		<header>Speakers</header>
+	    
+		<div id="content" data-bind="template: { name: 'speaker-template', foreach: d }"></div>
+
+)
+send ^v
+return
+
+; ------------------------------------------------
+; Add the JavaScript function to call out to That Conference
+; ------------------------------------------------
+
+::d24::
+clipboard =
+(	
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    url: 'http://2012.thatconference.com/odata/api.svc/People',
+                    dataType: "json",
+
+                    success: function (data) {
+                        ko.applyBindings(data);
+                    }
+                });
+            });
+	    </script>
+)
+send ^v
+return
+
+; ------------------------------------------------
+; Add a styles.css and style
+; ------------------------------------------------
+
+::d25::
+clipboard =
+(	
+@font-face {
+    font-family: "Shadows";
+    src: url("/fonts/ShadowsIntoLight.woff") format('woff');
+}
+
+@font-face {
+    font-family: "Source";
+    src: url("/fonts/SourceCodePro-Regular.woff") format('woff');
+}
+
+header, h1, h2 {
+    font-family: 'Shadows', cursive; 
+}
+
+header {
+    font-size: 4em;
+    background-color: white;
+    color: white;
+    text-shadow: black 2px 2px 10px;
+}
+
+#content {
+    margin: 25px;
+}
+
+.desc {
+    font-family: 'Source', sans-serif;
+    margin:  25px;
+}		
+)
+send ^v
+return
+
+; ------------------------------------------------
+; Reference the stylesheet
+; ------------------------------------------------
+
+::d26::
+clipboard =
+(	
+	<link href="/css/style.css" rel="stylesheet" />
+)
+send ^v
+return
+
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; Redo the entire demo but start from file new.
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+; ------------------------------------------------
+; open base solution
+; copy the scripts and folders over in powershell
+; ------------------------------------------------
+
+; ps: w8Copy.ps1
+
+; ------------------------------------------------
+; Add the onloaded event for the winjs call
+; ------------------------------------------------
+
+::d27::
+clipboard =
+(	
+    app.onloaded = function () {
+	
 	}
 )
 send ^v
 return
 
-::d13::
-clipboard =
-(
-	function buttonClick () {
+; ------------------------------------------------
+; Convert the jQuery Call to WinJS
+; ------------------------------------------------
 
-    };
-)
-send ^v
-return
-
-::d14::
-clipboard =
-(
-	app.onready = function () {
-        document.getElementById("myButton").addEventListener("click", buttonClick, false);
-    }
-)
-send ^v
-return
-
-::d15::
-clipboard =
-(
-	var resultElement = document.getElementById("results");
-
-	var existingText = resultElement.innerHTML;
-	var x = WinRTComponent.MyWinRTAwesome.helloWorld();
-
-	resultElement.innerHTML = existingText + "\n" + x;
-)
-send ^v
-return
-
-; ------------------------
-; web - demo snippits
-; ------------------------
-
-::d21::
-clipboard =
-(
-	<script src="~/Scripts/jquery-1.7.1.js"></script>
-	<script src="~/Scripts/knockout-2.1.0.js"></script>
-)
-send ^v
-return
-
-::d22::
-clipboard =
-(
-    <script type="text/html" id="speaker-template">
-		<div class="item">
-
-            <h2 class="title"><span data-bind="text: FirstName"></span> <span data-bind="text: LastName"></span></h2>
-		    <p class="desc" data-bind="text: Bio"></p>
-            <div class="pic"></div>
-		    
-        </div>
-	</script>
-)
-send ^v
-return
-
-::d23::
-clipboard =
-(
-	<header>Speakers</header>
-	
-	<div id="content" data-bind="template: { name: 'speaker-template', foreach: d }"></div>
-)
-send ^v
-return
-
-::d24::
-clipboard =
-(	
-	<script type="text/javascript">
-        $(document).ready(function () {
-            $.ajax({
-                url: 'http://www.thatconference.com/odata/api.svc/People',
-                dataType: "json",
-
-                success: function (data) {
-                    ko.applyBindings(data);
-                },
-            });
-        });
-	</script>
-)
-send ^v
-return
-
-::d25::
+::d28::
 clipboard =
 (	
         WinJS.xhr({
-            url: "http://thatConference.com/odata/api.svc/People",
+            url: "http://2012.thatConference.com/odata/api.svc/People",
             headers: { accept: "application/json" }
 
         }).then(
@@ -127,15 +179,20 @@ clipboard =
             },
             function (args) {
                 //error
-            });	
-			
+            });
 )
 send ^v
 return
 
-; ------------------------
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 ; app bar - demo snippits
-; ------------------------
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+; ------------------------------------------------
+; Add the app bar. Talk about the data- control
+; ------------------------------------------------
 
 ::ab1::
 clipboard =
@@ -153,6 +210,10 @@ clipboard =
 send ^v
 return
 
+; ------------------------------------------------
+; Add the event listener for the app bar button
+; ------------------------------------------------
+
 ::ab2::
 clipboard =
 (	
@@ -160,6 +221,10 @@ clipboard =
 )
 send ^v
 return
+
+; ------------------------------------------------
+; Integrate with Windows.Media.Capture
+; ------------------------------------------------
 
 ::ab3::
 clipboard =
@@ -193,9 +258,29 @@ clipboard =
 send ^v
 return
 
-; ------------------------
-; settings snippits
-; ------------------------
+; ------------------------------------------------
+; Add the div for the captured picture
+; ------------------------------------------------
+
+::ab4::
+clipboard =
+(	
+    <div class="pic"></div>
+)
+send ^v
+return
+
+
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; Settings Settings Settings Settings Settings Settings
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+
+; ------------------------------------------------
+; Create the settings buttons, files are already there.
+; ------------------------------------------------
 
 ::ss1::
 clipboard =
@@ -220,6 +305,17 @@ clipboard =
 send ^v
 return
 
+
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; STYLE STYLE STYLE STYLE STYLE STYLE STYLE STYLE STYLE STYLE
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+; ------------------------------------------------
+; style body
+; ------------------------------------------------
+
 ::css1::
 clipboard = 
 (
@@ -240,6 +336,11 @@ body {
 send ^v
 return
 
+; ------------------------------------------------
+; style header
+; ------------------------------------------------
+
+
 ::css2::
 clipboard =
 (	
@@ -254,6 +355,10 @@ header {
 )
 send ^v
 return
+
+; ------------------------------------------------
+; style the content
+; ------------------------------------------------
 
 ::css3::
 clipboard =
@@ -274,6 +379,10 @@ clipboard =
 send ^v
 return
 
+; ------------------------------------------------
+; style items
+; ------------------------------------------------
+
 ::css4::
 clipboard =
 (	
@@ -290,6 +399,10 @@ clipboard =
 send ^v
 return
 
+; ------------------------------------------------
+; style title
+; ------------------------------------------------
+
 ::css5::
 clipboard =
 (	
@@ -302,6 +415,10 @@ clipboard =
 )
 send ^v
 return
+
+; ------------------------------------------------
+; style the description
+; ------------------------------------------------
 
 ::css6::
 clipboard =
@@ -317,6 +434,10 @@ clipboard =
 send ^v
 return
 
+; ------------------------------------------------
+; style the pic
+; ------------------------------------------------
+
 ::css7::
 clipboard =
 (	
@@ -331,6 +452,10 @@ clipboard =
 )
 send ^v
 return
+
+; ------------------------------------------------
+; Add the Media 
+; ------------------------------------------------
 
 ::css8::
 clipboard =

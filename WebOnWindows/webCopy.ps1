@@ -1,0 +1,1 @@
+﻿Copy-Item -Path ./toCopy/* -Destination ./@webStart -Recurse -Verbose

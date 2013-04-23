@@ -6,16 +6,15 @@
     <head>
         <meta charset="utf-8" />
         
-        <script src="/scripts/jquery-1.7.1.js"></script>
-	    <script src="/Scripts/knockout-2.1.0.js"></script>
+        <script src="/scripts/jquery-2.0.0.min.js"></script>
+	    <script src="/scripts/knockout-2.2.1.js"></script>
 
         <link href="/style.css" rel="stylesheet" />
 
     </head>
 
     <body>
-        <header>Speakers</header>
-        
+       
         <script type="text/html" id="speaker-template">
 		    <div class="item">
 
@@ -28,6 +27,7 @@
             </div>
 	    </script>
 
+        <header>Speakers</header>
 	    <div id="content" data-bind="template: { name: 'speaker-template', foreach: d }"></div>
 
         <script type="text/javascript">

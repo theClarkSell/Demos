@@ -1,0 +1,1 @@
+﻿Copy-Item -Path ./toCopy/* -Destination ./@w8ClientStart/client/ -Recurse -Verbose
