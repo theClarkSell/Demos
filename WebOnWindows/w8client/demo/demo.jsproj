@@ -53,8 +53,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="css\default.css" />
+    <Content Include="css\style.css" />
     <Content Include="default.html" />
-    <Content Include="Demo.txt" />
     <Content Include="Scripts\jquery-2.0.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.0.js" />
     <Content Include="Scripts\jquery-2.0.0.min.js" />
