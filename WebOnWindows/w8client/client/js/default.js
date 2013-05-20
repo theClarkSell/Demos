@@ -22,6 +22,8 @@
     };
 
 
+
+
     app.onsettings = function (e) {
 
         e.detail.applicationcommands = {
@@ -37,6 +39,12 @@
 
         WinJS.UI.SettingsFlyout.populateSettings(e);
     };
+
+
+
+
+
+
 
 
     function imageCapture() {

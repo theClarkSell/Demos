@@ -55,7 +55,17 @@
     <Content Include="css\default.css" />
     <Content Include="css\style.css" />
     <Content Include="default.html" />
+    <Content Include="scripts\jquery-2.0.0.min.js" />
+    <Content Include="scripts\knockout-2.2.1.js" />
     <None Include="demo_StoreKey.pfx" />
+    <Content Include="fonts\ShadowsIntoLight.woff" />
+    <Content Include="fonts\SourceCodePro-Black.woff" />
+    <Content Include="fonts\SourceCodePro-Bold.woff" />
+    <Content Include="fonts\SourceCodePro-ExtraLight.woff" />
+    <Content Include="fonts\SourceCodePro-Light.woff" />
+    <Content Include="fonts\SourceCodePro-Medium.woff" />
+    <Content Include="fonts\SourceCodePro-Regular.woff" />
+    <Content Include="fonts\SourceCodePro-Semibold.woff" />
     <Content Include="images\logo.png" />
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
