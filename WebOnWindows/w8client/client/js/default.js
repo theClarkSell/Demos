@@ -21,9 +21,6 @@
         }
     };
 
-
-
-
     app.onsettings = function (e) {
 
         e.detail.applicationcommands = {
@@ -39,13 +36,6 @@
 
         WinJS.UI.SettingsFlyout.populateSettings(e);
     };
-
-
-
-
-
-
-
 
     function imageCapture() {
         var _capture = Windows.Media.Capture;
@@ -75,7 +65,7 @@
     app.onloaded = function () {
 
         WinJS.xhr({
-            url: "http://2012.thatConference.com/odata/api.svc/People",
+            url: "http://www.thatConference.com/odata/api.svc/People",
             headers: { accept: "application/json" }
 
         }).then(

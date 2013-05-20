@@ -47,8 +47,8 @@
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>demo_StoreKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>942F4EBEE916C76D030AA09493349347012DE19B</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>demo_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>A5C95C7FAC9ABEF197DC5341197F189257ABF066</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
   </PropertyGroup>
   <ItemGroup>
@@ -57,7 +57,6 @@
     <Content Include="default.html" />
     <Content Include="scripts\jquery-2.0.0.min.js" />
     <Content Include="scripts\knockout-2.2.1.js" />
-    <None Include="demo_StoreKey.pfx" />
     <Content Include="fonts\ShadowsIntoLight.woff" />
     <Content Include="fonts\SourceCodePro-Black.woff" />
     <Content Include="fonts\SourceCodePro-Bold.woff" />
@@ -74,7 +73,6 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="js\default.js" />
-    <None Include="Package.StoreAssociation.xml" />
     <Content Include="pages\settings\aboutFlyout.html" />
     <Content Include="pages\settings\helpFlyout.html" />
     <Content Include="pages\settings\settings.css" />

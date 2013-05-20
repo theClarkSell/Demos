@@ -69,7 +69,7 @@ clipboard =
         <script type="text/javascript">
             $(document).ready(function () {
                 $.ajax({
-                    url: 'http://2012.thatconference.com/odata/api.svc/People',
+                    url: 'http://www.thatconference.com/odata/api.svc/People',
                     dataType: "json",
 
                     success: function (data) {
@@ -169,7 +169,7 @@ return
 clipboard =
 (	
         WinJS.xhr({
-            url: "http://2012.thatConference.com/odata/api.svc/People",
+            url: "http://www.thatConference.com/odata/api.svc/People",
             headers: { accept: "application/json" }
 
         }).then(
