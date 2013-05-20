@@ -8,7 +8,7 @@
 ; copy the scripts and folders over in powershell
 ; ------------------------------------------------
 
-; ps: w8Copy.ps1
+; ps: webCopy.ps1
 
 ; ------------------------------------------------
 ; Add the scripts to the page
@@ -129,7 +129,7 @@ return
 ::d26::
 clipboard =
 (	
-	<link href="/css/style.css" rel="stylesheet" />
+	<link href="/style.css" rel="stylesheet" />
 )
 send ^v
 return
