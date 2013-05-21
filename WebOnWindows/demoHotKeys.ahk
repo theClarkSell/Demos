@@ -199,22 +199,34 @@ clipboard =
 (	
     <div id="appbar" data-win-control="WinJS.UI.AppBar">            
             
-        <button data-win-control="WinJS.UI.AppBarCommand" 
-                data-win-options="{id:'cmd', label:'picture', icon:'placeholder'}" 
-                type="button"
-                id="picture">
-        </button>
-
     </div>
 )
 send ^v
 return
 
 ; ------------------------------------------------
-; Add the event listener for the app bar button
+; Add the app bar button.
 ; ------------------------------------------------
 
 ::ab2::
+clipboard =
+(	            
+        <button data-win-control="WinJS.UI.AppBarCommand" 
+                data-win-options="{id:'cmd', label:'picture', icon:'placeholder'}" 
+                type="button"
+                id="picture">
+        </button>
+
+)
+send ^v
+return
+
+
+; ------------------------------------------------
+; Add the event listener for the app bar button
+; ------------------------------------------------
+
+::ab3::
 clipboard =
 (	
     document.querySelector("#picture").addEventListener("click", imageCapture);
@@ -226,7 +238,7 @@ return
 ; Integrate with Windows.Media.Capture
 ; ------------------------------------------------
 
-::ab3::
+::ab4::
 clipboard =
 (	
 	
@@ -262,7 +274,7 @@ return
 ; Add the div for the captured picture
 ; ------------------------------------------------
 
-::ab4::
+::ab5::
 clipboard =
 (	
     <div class="pic"></div>
@@ -320,6 +332,16 @@ return
 clipboard = 
 (
 
+@font-face {
+    font-family: "Shadows";
+    src: url("/fonts/ShadowsIntoLight.woff") format('woff');
+}
+
+@font-face {
+    font-family: "Source";
+    src: url("/fonts/SourceCodePro-Regular.woff") format('woff');
+}
+
 body {
 
 	height: 100`%;
@@ -345,11 +367,16 @@ return
 clipboard =
 (	
 
+header, h1, h2 {
+    font-family: 'Shadows', cursive;
+}
+
 header {
 	-ms-grid-column: 2;
 	-ms-grid-row: 1;
 	
 	font-size: 500`%;
+	text-shadow: black 2px 2px 10px;
 } 
 
 )
@@ -425,6 +452,7 @@ clipboard =
 (	
 
 .desc {
+	font-family: 'Source', sans-serif;
 	-ms-grid-row: 2;
 	-ms-grid-column: 1;
 	padding-left: 25px;
