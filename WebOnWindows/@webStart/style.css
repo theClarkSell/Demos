@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "Shadows";
+    src: url("/fonts/ShadowsIntoLight.woff") format('woff');
+}
+
+@font-face {
+    font-family: "Source";
+    src: url("/fonts/SourceCodePro-Regular.woff") format('woff');
+}
+
+header, h1, h2 {
+    font-family: 'Shadows', cursive;
+}
+
+header {
+    font-size: 4em;
+    background-color: white;
+    color: white;
+    text-shadow: black 2px 2px 10px;
+}
+
+#content {
+    margin: 25px;
+}
+
+.desc {
+    font-family: 'Source', sans-serif;
+    margin:  25px;
+}

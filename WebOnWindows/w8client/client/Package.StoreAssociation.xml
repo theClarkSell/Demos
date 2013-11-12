@@ -352,5 +352,10 @@
     <MainPackageIdentityName>32361ClarkSell.TheWindowsDeveloper</MainPackageIdentityName>
     <MainPackageIdentityName>32361ClarkSell.theGarage</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/437a4a5c-3b8f-4261-a291-8f151f5aca03" />
+  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/437a4a5c-3b8f-4261-a291-8f151f5aca03">
+    <PackageInfo>
+      <PackageArchitecture>x64</PackageArchitecture>
+      <PackageMaxArchitectureVersion>1.0.0.1</PackageMaxArchitectureVersion>
+    </PackageInfo>
+  </PackageInfoList>
 </StoreAssociation>

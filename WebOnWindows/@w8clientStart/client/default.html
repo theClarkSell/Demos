@@ -13,8 +13,38 @@
 	<link href="/css/default.css" rel="stylesheet" />
 	<script src="/js/default.js"></script>
 
+    <script src="/scripts/jquery-2.0.0.min.js"></script>
+	<script src="/scripts/knockout-2.2.1.js"></script>
+
 </head>
 <body>
-       
+	   
+    <script type="text/html" id="speaker-template">
+		    <div class="item">
+
+                <h2 class="title">
+                    <span data-bind="text: FirstName"></span> <span data-bind="text: LastName"></span>
+                </h2>
+
+                <p class="desc" data-bind="text: Bio"></p>
+
+            </div>
+	    </script>
+
+    <header>Speakers</header>
+    <div class="pic"></div>
+    <div id="content" data-bind="template: { name: 'speaker-template', foreach: d }"></div>
+
+
+    <div id="appbar" data-win-control="WinJS.UI.AppBar">
+        <button data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{id:'cmd', label:'picture', icon:'camera'}"
+                type="button"
+                id="picture">
+        </button>
+
+    </div>
+
+
 </body>
 </html>

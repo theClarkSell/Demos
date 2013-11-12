@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="32361ClarkSell.ClarkAwesome" Version="1.0.0.1" Publisher="CN=E52C30A2-E897-42F9-8D37-1F9E26313F35" />
+  <Identity Name="32361ClarkSell.ClarkAwesome" Version="1.0.0.2" Publisher="CN=E52C30A2-E897-42F9-8D37-1F9E26313F35" />
   <Properties>
     <DisplayName>Clark Awesome</DisplayName>
     <PublisherDisplayName>Clark Sell</PublisherDisplayName>

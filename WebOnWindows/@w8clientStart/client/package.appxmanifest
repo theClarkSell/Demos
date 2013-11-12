@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="32361ClarkSell.ClarkTest" Version="1.0.0.0" Publisher="CN=Clark" />
+  <Identity Name="32361ClarkSell.TheWindowsDeveloper" Version="1.0.0.1" Publisher="CN=E52C30A2-E897-42F9-8D37-1F9E26313F35" />
   <Properties>
-    <DisplayName>Clark Test</DisplayName>
+    <DisplayName>The Windows Developer</DisplayName>
     <PublisherDisplayName>Clark Sell</PublisherDisplayName>
     <Logo>images\storelogo.png</Logo>
   </Properties>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <VisualElements DisplayName="Clark Test" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="demo" ForegroundText="light" BackgroundColor="#464646">
+      <VisualElements DisplayName="The Windows Developer" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="demo" ForegroundText="light" BackgroundColor="#464646">
         <DefaultTile ShowName="allLogos" />
         <SplashScreen Image="images\splashscreen.png" />
       </VisualElements>
@@ -23,5 +23,7 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <DeviceCapability Name="microphone" />
+    <DeviceCapability Name="webcam" />
   </Capabilities>
 </Package>

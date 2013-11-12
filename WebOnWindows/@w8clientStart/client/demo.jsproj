@@ -47,13 +47,15 @@
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>demo_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>A5C95C7FAC9ABEF197DC5341197F189257ABF066</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>demo_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>418F63ACB0D9AFC1D115D07F9E98FF599D55102F</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="css\default.css" />
     <Content Include="default.html" />
+    <None Include="Package.StoreAssociation.xml" />
+    <None Include="demo_StoreKey.pfx" />
     <Content Include="scripts\jquery-2.0.0.min.js" />
     <Content Include="scripts\knockout-2.2.1.js" />
     <Content Include="fonts\ShadowsIntoLight.woff" />

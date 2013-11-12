@@ -4,10 +4,42 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <script src="/scripts/jquery-2.0.0.min.js"></script>
+	    <script src="/scripts/knockout-2.2.1.js"></script>
 
+        <link href="/style.css" rel="stylesheet" />
     </head>
 
     <body>
+
+        <script type="text/html" id="speaker-template">
+		    <div class="item">
+
+                <h2 class="title">
+                    <span data-bind="text: FirstName"></span> <span data-bind="text: LastName"></span>
+                </h2>
+
+                <p class="desc" data-bind="text: Bio"></p>
+
+            </div>
+	    </script>
+
+        <header>Speakers</header>
+
+		<div id="content" data-bind="template: { name: 'speaker-template', foreach: d }"></div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    url: 'http://www.thatconference.com/odata/api.svc/People',
+                    dataType: "json",
+
+                    success: function (data) {
+                        ko.applyBindings(data);
+                    }
+                });
+            });
+	    </script>
 
     </body>
 </html>
