@@ -15,9 +15,6 @@ GestureWrapper::~GestureWrapper()
 BOOL CALLBACK EnumWindowsProc(HWND hWnd, LPARAM lParam) {
 
 	DWORD dwThreadId, dwProcessId;
-	HINSTANCE hInstance;
-	char String[255];
-	HANDLE hProcess;
 
 	if (!hWnd)
 		return TRUE;		// Not a window
@@ -43,21 +40,16 @@ BOOL CALLBACK EnumWindowsProc(HWND hWnd, LPARAM lParam) {
 	return TRUE;
 }
 
-void GestureWrapper::TBD(DWORD processId)
-{
+void GestureWrapper::TBD(DWORD processId){
 	bool x = EnumWindows(EnumWindowsProc, processId);
 }
 
 void GestureWrapper::DisableGestures(DWORD processId) {
-
 	HWND windowHandle = GestureWrapper::GetProcessWindow(processId);
-
-
 	GestureWrapper::SetGesture(windowHandle, VARIANT_TRUE);
 }
 
 void GestureWrapper::DisableGestures(HWND windowHandle) {
-
 	GestureWrapper::SetGesture(windowHandle, VARIANT_TRUE);
 }
 
@@ -67,26 +59,25 @@ void GestureWrapper::EnableGestures(DWORD processId) {
 }
 
 void GestureWrapper::SetGesture(HWND hWnd, VARIANT_BOOL enabled) {
-	//if (!hWnd)
-	//{
-		IPropertyStore* pPropStore;
-		HRESULT hrReturnValue = SHGetPropertyStoreForWindow(hWnd, IID_PPV_ARGS(&pPropStore));
 
+	IPropertyStore* pPropStore;
+	HRESULT hrReturnValue = SHGetPropertyStoreForWindow(hWnd, IID_PPV_ARGS(&pPropStore));
+
+	if (SUCCEEDED(hrReturnValue))
+	{
+		PROPVARIANT var;
+		var.vt = VT_BOOL;
+		var.boolVal = enabled;
+
+		hrReturnValue = pPropStore->SetValue(PKEY_EdgeGesture_DisableTouchWhenFullscreen, var);
 		if (SUCCEEDED(hrReturnValue))
 		{
-			PROPVARIANT var;
-			var.vt = VT_BOOL;
-			var.boolVal = enabled;
 
-			hrReturnValue = pPropStore->SetValue(PKEY_EdgeGesture_DisableTouchWhenFullscreen, var);
-			if (SUCCEEDED(hrReturnValue))
-			{
-
-			}
-
-			pPropStore->Release();
 		}
-	//}
+
+		pPropStore->Release();
+	}
+
 }
 
 HWND GestureWrapper::GetProcessWindow(DWORD processId)
@@ -103,15 +94,17 @@ HWND GestureWrapper::GetProcessWindow(DWORD processId)
 		if (!nextWindow)
 			break;
 
-		// Check whether window belongs to the correct process.
 		DWORD procId = -1;
 		GetWindowThreadProcessId(nextWindow, &procId);
 
 		if (procId == processId) {
-			// Add additional checks. In my case, I had to bring the window to front so these checks were necessary.
 			wchar_t windowText[1024];
-			if (IsWindowVisible(nextWindow) && !IsIconic(nextWindow) && GetWindowText(nextWindow, (LPWSTR) windowText, sizeof(windowText) / sizeof(wchar_t))
+			
+			if (IsWindowVisible(nextWindow) 
+				&& !IsIconic(nextWindow) 
+				&& GetWindowText(nextWindow, (LPWSTR) windowText, sizeof(windowText) / sizeof(wchar_t))
 				&& !GetParent(nextWindow))
+				
 				return nextWindow;
 		}
 

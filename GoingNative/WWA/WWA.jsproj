@@ -62,10 +62,10 @@
     <Content Include="images\storelogo.scale-100.png" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
+    <Content Include="readme.txt" />
     <None Include="WWA_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\win32-DLL\win32-DLL.vcxproj" />
     <ProjectReference Include="..\WinMD\WinMD.vcxproj" />
   </ItemGroup>
   <ItemGroup>
