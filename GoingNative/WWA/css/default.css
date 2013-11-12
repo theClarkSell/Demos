@@ -1,0 +1,27 @@
+﻿body {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr;
+	margin: 0px;
+}
+
+#content {
+	-ms-grid-row: 2;
+	-ms-grid-column: 2;
+	text-align: center;
+}
+
+#callResults {
+    font-size: xx-large;
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+}
+
+button {
+    margin: 15px;
+	width: 300px;
+}
+

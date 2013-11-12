@@ -1,0 +1,15 @@
+# build folders
+Debug
+ipch
+
+WWA/bin
+WWA/bld
+
+win32-Console/Debug
+win32-DLL/Debug
+WinMD/Debug
+
+# VS solution files
+*.suo
+*.opensdf
+*.sdf
