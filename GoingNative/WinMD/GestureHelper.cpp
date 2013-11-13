@@ -14,23 +14,23 @@ GestureHelper::GestureHelper()
 {
 }
 
+//disables by getting the window from the pid
+LONG32 GestureHelper::DisableViaDirect() {
+	DWORD processId = GetCurrentProcessId();
+
+	GestureWrapper *x = new GestureWrapper();
+	x->DisableGestures(processId);
+
+	return processId;
+}
+
 // disables by calling enum windows and finding the process
-LONG32 GestureHelper::EnableGestures() {
+LONG32 GestureHelper::DisableViaEnum() {
 
 	DWORD processId = GetCurrentProcessId();
 
 	GestureWrapper *x = new GestureWrapper();
 	x->TBD(processId);
-	
-	return processId;
-}
-
-//disables by 
-LONG32 GestureHelper::DisableGestures() {
-	DWORD processId = GetCurrentProcessId();
-
-	GestureWrapper *x = new GestureWrapper();
-	x->DisableGestures(processId);
 
 	return processId;
 }

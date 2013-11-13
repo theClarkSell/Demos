@@ -6,7 +6,7 @@ namespace WinMD
     {
     public:
 		GestureHelper();
-		LONG32 DisableGestures();
-		LONG32 EnableGestures();
+		LONG32 DisableViaDirect();
+		LONG32 DisableViaEnum();
     };
 }

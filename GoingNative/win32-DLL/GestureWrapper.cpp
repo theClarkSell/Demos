@@ -40,6 +40,7 @@ BOOL CALLBACK EnumWindowsProc(HWND hWnd, LPARAM lParam) {
 	return TRUE;
 }
 
+//This is what is called via to enum windows.
 void GestureWrapper::TBD(DWORD processId){
 	bool x = EnumWindows(EnumWindowsProc, processId);
 }

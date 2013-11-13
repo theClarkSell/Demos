@@ -23,20 +23,20 @@
     };
 
     app.onready = function (args) {
-        document.querySelector("#btnEnableGestures").addEventListener("click", enableGestures, false);
-        document.querySelector("#btnDisableGestures").addEventListener("click", disableGestures, false);
+        document.querySelector("#btnDisableViaDirect").addEventListener("click", directDisable, false);
+        document.querySelector("#btnDisableViaEnum").addEventListener("click", enumDisable, false);
     };
     
-    function enableGestures(args) {
+    function directDisable(args) {
         var gestureHelper = new WinMD.GestureHelper();
-        var helperResults = gestureHelper.enableGestures();
+        var helperResults = gestureHelper.disableViaDirect();
 
         callResults.textContent = helperResults;
     };
 
-    function disableGestures(args) {
+    function enumDisable(args) {
         var gestureHelper = new WinMD.GestureHelper();
-        var helperResults = gestureHelper.disableGestures();
+        var helperResults = gestureHelper.disableViaEnum();
 
         callResults.textContent = helperResults;
     };
