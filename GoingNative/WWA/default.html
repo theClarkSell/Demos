@@ -17,22 +17,25 @@
 
     <div id="content">
         <p id="callResults">just started</p>
-    
-        
-		<ul id="commands">
-			<li>
-				<button id="btnDisableViaDirect">
-					Disable Gestures via direct call
-				</button>	
-			</li>
-			<li>
-				<button id="btnDisableViaEnum">
-					Disable gestures via enum windows search
-				</button>	
-			</li>
-		</ul>
-       
+
+        <ul id="commands">
+            <li>
+                <button id="btnDisableViaDirect">
+                    Disable Gestures via direct call
+                </button>
+            </li>
+            <li>
+                <button id="btnDisableViaEnum">
+                    Disable gestures via enum windows search
+                </button>
+            </li>
+        </ul>
+
+        <p style="color: red;">This will not work without running the postbuild.bat file sitting along side the sln.</p>
+        <p>This moves the UM C++ DLL into the appx folder for the WWA app.</p>
+        <p>IF... the win32-dll changes you will need to recopy</p>
+
     </div>
-   
+
 </body>
 </html>

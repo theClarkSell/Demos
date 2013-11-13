@@ -31,14 +31,14 @@
         var gestureHelper = new WinMD.GestureHelper();
         var helperResults = gestureHelper.disableViaDirect();
 
-        callResults.textContent = helperResults;
+        callResults.textContent = "PID: " + helperResults;
     };
 
     function enumDisable(args) {
         var gestureHelper = new WinMD.GestureHelper();
         var helperResults = gestureHelper.disableViaEnum();
 
-        callResults.textContent = helperResults;
+        callResults.textContent = "PID: " + helperResults;
     };
 
     app.start();
